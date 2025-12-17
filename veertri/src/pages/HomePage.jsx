@@ -65,15 +65,35 @@ const HomePage = () => {
         <div className="px-4 md:px-16 mb-12">
           <Link to="/pre-launch" className="block group">
             <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#FAD502] to-[#e5c302] p-8 shadow-lg transform transition-all duration-300 hover:scale-[1.01] border border-[#FAD502]/50">
-              <div className="flex flex-col md:flex-row items-center justify-between relative z-10">
-                <div className="mb-4 md:mb-0">
-                  <h2 className="text-3xl font-bold text-black mb-2">Join Our Pre-Launch!</h2>
-                  <p className="text-black/80 text-lg font-medium">Be the first to experience the future of education. Sign up now for exclusive benefits.</p>
+              <div className="flex flex-col md:flex-row items-center justify-between relative z-10 gap-6">
+                <div className="flex-1 text-left">
+                  <h2 className="text-2xl md:text-3xl font-bold text-black mb-2">
+                    Join Our Beta-Testing!
+                  </h2>
+                  <p className="text-black/80 text-base md:text-lg font-medium leading-relaxed">
+                    Be the first to experience the future of education. We are
+                    currently developing an edutainment app and looking for
+                    feedback. Sign up now for 3 months of free premium access on
+                    release.
+                  </p>
+                  <p className="text-black mt-2 text-sm md:text-base">
+                    <span className="text-black font-bold"> Note:</span> The app
+                    is filled with mock data at the moment
+                  </p>
                 </div>
-                <div className="bg-black text-[#FAD502] px-6 py-3 rounded-full font-bold flex items-center gap-2 group-hover:bg-gray-900 transition-colors shadow-md">
+                <div className="flex-shrink-0 bg-black text-[#FAD502] px-6 py-3 rounded-full font-bold flex items-center gap-2 group-hover:bg-gray-900 transition-colors shadow-md whitespace-nowrap">
                   Register Now
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-5 w-5"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                      clipRule="evenodd"
+                    />
                   </svg>
                 </div>
               </div>

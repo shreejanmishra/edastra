@@ -64,13 +64,13 @@ const preLaunchSchema = new mongoose.Schema({
   age: {
     type: Number,
     required: true,
-    min: [1, "Age must be at least 1"],
-    max: [120, "Age must be less than 120"],
+    min: [3, "Age must be at least 3"],
+    max: [100, "Age must be less than 120"],
   },
   phoneNumber: {
     type: String,
     required: true,
-    match: [/^\+?[0-9]{10,15}$/, "Phone number should be 10-15 digits"],
+    match: [/^\+?[0-9]{10}$/, "Please provide a valid phone number"],
   },
   gender: {
     type: String,
@@ -80,6 +80,10 @@ const preLaunchSchema = new mongoose.Schema({
       message: "{VALUE} is not supported",
     },
   },
+  feedback: {
+    type: String,
+    required: false,
+  },
   createdAt: { type: Date, default: Date.now },
 });
 
@@ -88,7 +92,8 @@ const PreLaunchUser = mongoose.model("PreLaunchUser", preLaunchSchema);
 // Routes
 app.post("/api/pre-launch", async (req, res) => {
   try {
-    const { firstName, lastName, email, age, phoneNumber, gender } = req.body;
+    const { firstName, lastName, email, age, phoneNumber, gender, feedback } =
+      req.body;
 
     // Basic validation
     if (!firstName || !lastName || !email || !age || !phoneNumber || !gender) {
@@ -108,6 +113,7 @@ app.post("/api/pre-launch", async (req, res) => {
       age,
       phoneNumber,
       gender,
+      feedback,
     });
 
     await newUser.save();

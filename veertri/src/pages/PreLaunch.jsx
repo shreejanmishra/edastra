@@ -9,6 +9,7 @@ const PreLaunch = () => {
     age: "",
     phoneNumber: "",
     gender: "select",
+    feedback: "",
   });
   const [status, setStatus] = useState({ type: "", message: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -46,6 +47,7 @@ const PreLaunch = () => {
           age: "",
           phoneNumber: "",
           gender: "select",
+          feedback: "",
         });
       } else {
         setStatus({
@@ -106,7 +108,7 @@ const PreLaunch = () => {
                   pattern="[A-Za-z\s]+"
                   title="Only letters and spaces allowed"
                   className="w-full bg-gray-700/50 border border-gray-600 rounded px-3 py-2 text-white focus:outline-none focus:border-[#FAD502] focus:ring-1 focus:ring-[#FAD502] transition-colors"
-                  placeholder="John"
+                  placeholder="Ram"
                 />
               </div>
               <div>
@@ -122,7 +124,7 @@ const PreLaunch = () => {
                   pattern="[A-Za-z\s]+"
                   title="Only letters and spaces allowed"
                   className="w-full bg-gray-700/50 border border-gray-600 rounded px-3 py-2 text-white focus:outline-none focus:border-[#FAD502] focus:ring-1 focus:ring-[#FAD502] transition-colors"
-                  placeholder="Doe"
+                  placeholder="Prasad"
                 />
               </div>
             </div>
@@ -138,7 +140,7 @@ const PreLaunch = () => {
                 onChange={handleChange}
                 required
                 className="w-full bg-gray-700/50 border border-gray-600 rounded px-3 py-2 text-white focus:outline-none focus:border-[#FAD502] focus:ring-1 focus:ring-[#FAD502] transition-colors"
-                placeholder="john@example.com"
+                placeholder="ram@gmail.com"
               />
             </div>
 
@@ -156,7 +158,7 @@ const PreLaunch = () => {
                   min="1"
                   max="120"
                   className="w-full bg-gray-700/50 border border-gray-600 rounded px-3 py-2 text-white focus:outline-none focus:border-[#FAD502] focus:ring-1 focus:ring-[#FAD502] transition-colors"
-                  placeholder="25"
+                  placeholder="15"
                 />
               </div>
               <div>
@@ -194,7 +196,21 @@ const PreLaunch = () => {
                 pattern="^\+?[0-9]{10,15}$"
                 title="Please enter a valid phone number (10-15 digits)"
                 className="w-full bg-gray-700/50 border border-gray-600 rounded px-3 py-2 text-white focus:outline-none focus:border-[#FAD502] focus:ring-1 focus:ring-[#FAD502] transition-colors"
-                placeholder="+1 234 567 8900"
+                placeholder="9988776655"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-300 mb-1">
+                Feedback (Optional)
+              </label>
+              <textarea
+                name="feedback"
+                value={formData.feedback}
+                onChange={handleChange}
+                rows="3"
+                className="w-full bg-gray-700/50 border border-gray-600 rounded px-3 py-2 text-white focus:outline-none focus:border-[#FAD502] focus:ring-1 focus:ring-[#FAD502] transition-colors resize-none"
+                placeholder="Tell us what you think..."
               />
             </div>
 
