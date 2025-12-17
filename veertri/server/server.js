@@ -33,12 +33,12 @@ const connectDB = async () => {
 };
 
 // Handle MongoDB connection events
-mongoose.connection.on('disconnected', () => {
-  console.log('⚠️ MongoDB disconnected');
+mongoose.connection.on("disconnected", () => {
+  console.log("⚠️ MongoDB disconnected");
 });
 
-mongoose.connection.on('error', (err) => {
-  console.error('❌ MongoDB error:', err);
+mongoose.connection.on("error", (err) => {
+  console.error("❌ MongoDB error:", err);
 });
 
 connectDB();

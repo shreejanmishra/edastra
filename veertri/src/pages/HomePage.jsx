@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import HeroSection from "../components/HeroSection";
 import {
   getFeaturedContent,
@@ -58,6 +59,29 @@ const HomePage = () => {
           <div className="rounded-3xl overflow-hidden shadow-2xl border border-white/20 dark:border-gray-800">
             <HeroSection content={featuredContent} isCompact={true} />
           </div>
+        </div>
+
+        {/* Pre-Launch Banner */}
+        <div className="px-4 md:px-16 mb-12">
+          <Link to="/pre-launch" className="block group">
+            <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#FAD502] to-[#e5c302] p-8 shadow-lg transform transition-all duration-300 hover:scale-[1.01] border border-[#FAD502]/50">
+              <div className="flex flex-col md:flex-row items-center justify-between relative z-10">
+                <div className="mb-4 md:mb-0">
+                  <h2 className="text-3xl font-bold text-black mb-2">Join Our Pre-Launch!</h2>
+                  <p className="text-black/80 text-lg font-medium">Be the first to experience the future of education. Sign up now for exclusive benefits.</p>
+                </div>
+                <div className="bg-black text-[#FAD502] px-6 py-3 rounded-full font-bold flex items-center gap-2 group-hover:bg-gray-900 transition-colors shadow-md">
+                  Register Now
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                  </svg>
+                </div>
+              </div>
+              {/* Decorative elements */}
+              <div className="absolute top-0 right-0 -mt-10 -mr-10 w-40 h-40 bg-white/20 rounded-full blur-2xl"></div>
+              <div className="absolute bottom-0 left-0 -mb-10 -ml-10 w-40 h-40 bg-black/10 rounded-full blur-2xl"></div>
+            </div>
+          </Link>
         </div>
 
         {/* Category Rows */}
