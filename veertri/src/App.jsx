@@ -27,6 +27,7 @@ const EntertainmentCategory = lazy(() =>
 const HomeCategory = lazy(() => import("./pages/HomeCategory"));
 const SubjectPage = lazy(() => import("./pages/SubjectPage"));
 const VR = lazy(() => import("./pages/VR"));
+const PreLaunch = lazy(() => import("./pages/PreLaunch"));
 
 const LoadingFallback = () => (
   <div className="min-h-screen bg-black flex items-center justify-center">
@@ -60,6 +61,14 @@ function App() {
               element={
                 <Suspense fallback={<LoadingFallback />}>
                   <Login />
+                </Suspense>
+              }
+            />
+            <Route
+              path="/pre-launch"
+              element={
+                <Suspense fallback={<LoadingFallback />}>
+                  <PreLaunch />
                 </Suspense>
               }
             />
