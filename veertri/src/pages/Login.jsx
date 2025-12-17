@@ -28,6 +28,9 @@ const Login = () => {
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-[#FAD502] mb-2">Veertri</h1>
           <p className="text-gray-400">Your Learning Companion</p>
+          <div className="text-left text-sm text-gray-500 mt-4">
+            <p>Use any username and password to login</p>
+          </div>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
@@ -46,7 +49,7 @@ const Login = () => {
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               className="w-full bg-black border border-gray-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-[#FAD502] transition-colors"
-              placeholder="Enter your username"
+              placeholder="Enter mock username"
               required
             />
           </div>
@@ -60,7 +63,7 @@ const Login = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="w-full bg-black border border-gray-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-[#FAD502] transition-colors"
-              placeholder="Enter your password"
+              placeholder="Enter mock password"
               required
             />
           </div>
@@ -73,10 +76,6 @@ const Login = () => {
           >
             Sign In
           </motion.button>
-
-          <div className="text-center text-sm text-gray-500 mt-4">
-            <p>Use any username and password to login</p>
-          </div>
         </form>
       </div>
     </div>
