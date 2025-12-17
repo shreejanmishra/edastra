@@ -1,4 +1,4 @@
-## host link: [Veertri](https://veertri.netlify.app/)
+## host link: [Veertri](https://veertri.vercel.app/)
 # Veertri - The Ultimate Edutainment Platform 🎓🎬
 
 Veertri is a cutting-edge web application that bridges the gap between education and entertainment. It provides a seamless experience for students to access curriculum-based learning materials, documentaries, and educational movies, while also offering opportunities for scholarships and immersive VR experiences.
