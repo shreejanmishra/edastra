@@ -28,7 +28,11 @@ const PreLaunch = () => {
     setStatus({ type: "", message: "" });
 
     try {
-      const response = await fetch("http://localhost:5000/api/pre-launch", {
+      const apiUrl = import.meta.env.PROD
+        ? "/api/pre-launch"
+        : "http://localhost:5000/api/pre-launch";
+
+      const response = await fetch(apiUrl, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
