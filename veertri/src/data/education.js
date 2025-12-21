@@ -1,622 +1,532 @@
 export const educationalVideos = [
-  {
-    id: 1,
-    title: "Introduction to Astrophysics",
-    thumbnail:
-      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=500&h=750&fit=crop",
-    backdrop:
-      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&h=1080&fit=crop",
-    genre: "Science",
-    year: 2023,
-    duration: "45m",
-    rating: "4.9",
-    description:
-      "Explore the mysteries of the universe, from black holes to the big bang, in this comprehensive introduction to astrophysics.",
-    instructor: "Dr. Neil Tyson",
-    featured: true,
-    videoUrl:
-      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
-    classLevel: 11,
-  },
+  // {
+  //   id: 1,
+  //   title: "Fun with Basic Counting",
+  //   thumbnail:
+  //     "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=500&h=750&fit=crop",
+  //   backdrop:
+  //     "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=1920&h=1080&fit=crop",
+  //   genre: "Mathematics",
+  //   year: 2023,
+  //   duration: "45m",
+  //   rating: "4.9",
+  //   description:
+  //     "Discover the magic of numbers from 1 to 3 through animated songs and stories.",
+  //   instructor: "Schoolhouse Rock Team",
+  //   featured: true,
+  //   videoUrl:
+  //     "https://archive.org/download/schoolhouse-rock-30th/01%20Three%20Is%20A%20Magic%20Number.mp4",
+  //   classLevel: 8,
+  // },
   {
     id: 2,
-    title: "World History: Ancient Civilizations",
-    thumbnail:
-      "https://images.unsplash.com/photo-1599930113854-d6d7fd521f10?w=500&h=750&fit=crop",
-    backdrop:
-      "https://images.unsplash.com/photo-1599930113854-d6d7fd521f10?w=1920&h=1080&fit=crop",
+    title: "Great Scientist: Galileo Galilei",
+    thumbnail: "https://img.youtube.com/vi/JI36dazqEwU/hqdefault.jpg",
+    backdrop: "https://img.youtube.com/vi/JI36dazqEwU/maxresdefault.jpg",
     genre: "History",
     year: 2022,
     duration: "1h 15m",
     rating: "4.8",
     description:
-      "Journey back in time to explore the rise and fall of the world's greatest ancient civilizations, from Egypt to Rome.",
-    instructor: "Prof. Mary Beard",
+      "Discover the life and contributions of Galileo Galilei, the father of modern science.",
+    instructor: "NA",
     featured: false,
-    videoUrl:
-      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+    videoUrl: "https://www.youtube.com/watch?v=JI36dazqEwU",
     classLevel: 9,
   },
-  {
-    id: 3,
-    title: "Calculus Made Easy",
-    thumbnail:
-      "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=500&h=750&fit=crop",
-    backdrop:
-      "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=1920&h=1080&fit=crop",
-    genre: "Mathematics",
-    year: 2023,
-    duration: "50m",
-    rating: "4.7",
-    description:
-      "Master the fundamentals of calculus with intuitive explanations and real-world examples.",
-    instructor: "Prof. Steven Strogatz",
-    featured: true,
-    videoUrl:
-      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
-    classLevel: 12,
-  },
-  {
-    id: 4,
-    title: "Python Programming for Beginners",
-    thumbnail:
-      "https://images.unsplash.com/photo-1526379095098-d400fd0bf935?w=500&h=750&fit=crop",
-    backdrop:
-      "https://images.unsplash.com/photo-1526379095098-d400fd0bf935?w=1920&h=1080&fit=crop",
-    genre: "Technology",
-    year: 2024,
-    duration: "1h 30m",
-    rating: "4.9",
-    description:
-      "Start your coding journey with Python. Learn variables, loops, functions, and build your first application.",
-    instructor: "Guido van Rossum",
-    featured: false,
-    videoUrl:
-      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
-    classLevel: 10,
-  },
+  // {
+  //   id: 3,
+  //   title: "Introduction to Fractions",
+  //   thumbnail:
+  //     "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=750&fit=crop",
+  //   backdrop:
+  //     "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1920&h=1080&fit=crop",
+  //   genre: "Mathematics",
+  //   year: 2023,
+  //   duration: "50m",
+  //   rating: "4.7",
+  //   description:
+  //     "Make fractions fun with visual aids and everyday examples like sharing pizza.",
+  //   instructor: "Prof. Jo Boaler",
+  //   featured: true,
+  //   videoUrl:
+  //     "https://archive.org/download/schoolhouse-rock-30th/08%20Figure%20Eight.mp4",
+  //   classLevel: 10,
+  // },
+  // {
+  //   id: 4,
+  //   title: "Coding Basics with Scratch",
+  //   thumbnail: "https://img.youtube.com/vi/N-X1EU7tHVo/hqdefault.jpg",
+  //   backdrop: "https://img.youtube.com/vi/N-X1EU7tHVo/maxresdefault.jpg",
+  //   genre: "Technology",
+  //   year: 2024,
+  //   duration: "1h 30m",
+  //   rating: "4.9",
+  //   description:
+  //     "Introduce kids to programming through colorful blocks and creative projects.",
+  //   instructor: "Mitchel Resnick",
+  //   featured: false,
+  //   videoUrl: "https://www.youtube.com/watch?v=N-X1EU7tHVo",
+  //   classLevel: 9,
+  // },
   {
     id: 5,
-    title: "The Art of Creative Writing",
-    thumbnail:
-      "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=500&h=750&fit=crop",
-    backdrop:
-      "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=1920&h=1080&fit=crop",
+    title: "Big Bang",
+    thumbnail: "https://img.youtube.com/vi/rXER39AEE9k/hqdefault.jpg",
+    backdrop: "https://img.youtube.com/vi/rXER39AEE9k/maxresdefault.jpg",
     genre: "Arts",
     year: 2021,
     duration: "40m",
     rating: "4.6",
     description:
-      "Unlock your creativity and learn the techniques of storytelling, character development, and world-building.",
-    instructor: "Neil Gaiman",
+      "Learn how the universe began with catchy tunes and vibrant animations.",
+    instructor: "Mo Willems",
     featured: false,
-    videoUrl:
-      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
-    classLevel: 8,
+    videoUrl: "https://www.youtube.com/watch?v=rXER39AEE9k",
+    classLevel: 7,
   },
-  {
-    id: 6,
-    title: "Linear Algebra",
-    thumbnail:
-      "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=500&h=750&fit=crop",
-    backdrop:
-      "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=1920&h=1080&fit=crop",
-    genre: "Mathematics",
-    year: 2023,
-    duration: "55m",
-    rating: "4.8",
-    description: "Understanding vectors, matrices, and linear transformations.",
-    instructor: "Prof. Gilbert Strang",
-    featured: false,
-    videoUrl:
-      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
-    classLevel: 12,
-  },
-  {
-    id: 7,
-    title: "Organic Chemistry",
-    thumbnail:
-      "https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=500&h=750&fit=crop",
-    backdrop:
-      "https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=1920&h=1080&fit=crop",
-    genre: "Science",
-    year: 2024,
-    duration: "1h 10m",
-    rating: "4.7",
-    description: "A deep dive into carbon compounds and their reactions.",
-    instructor: "Dr. Khan",
-    featured: true,
-    videoUrl:
-      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
-    classLevel: 11,
-  },
+  // {
+  //   id: 6,
+  //   title: "Vectors and Shapes Adventure",
+  //   thumbnail:
+  //     "https://plus.unsplash.com/premium_photo-1724800663657-3e57bf4f622c?w=500&h=750&fit=crop",
+  //   backdrop:
+  //     "https://plus.unsplash.com/premium_photo-1724800663657-3e57bf4f622c?w=1920&h=1080&fit=crop",
+  //   genre: "Mathematics",
+  //   year: 2023,
+  //   duration: "55m",
+  //   rating: "4.8",
+  //   description:
+  //     "Embark on a journey with vectors, matrices, and geometric transformations.",
+  //   instructor: "Prof. Dan Meyer",
+  //   featured: false,
+  //   videoUrl:
+  //     "https://archive.org/download/schoolhouse-rock-30th/09%20Naughty%20Number%20Nine.mp4",
+  //   classLevel: 11,
+  // },
+  // {
+  //   id: 7,
+  //   title: "Big Buck Bunny",
+  //   thumbnail:
+  //     "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Big_buck_bunny_poster_big.jpg/960px-Big_buck_bunny_poster_big.jpg",
+  //   backdrop:
+  //     "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Big_buck_bunny_poster_big.jpg/960px-Big_buck_bunny_poster_big.jpg",
+  //   genre: "Science",
+  //   year: 2024,
+  //   duration: "1h 10m",
+  //   rating: "4.7",
+  //   description:
+  //     "A lovable rabbit's peaceful life is disrupted by three bullying rodents, leading to comedic chaos.",
+  //   instructor: "NA",
+  //   featured: true,
+  //   videoUrl:
+  //     "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+  //   classLevel: 10,
+  // },
   {
     id: 8,
-    title: "World Geography",
+    title: "Continents and Oceans Explorer",
     thumbnail:
-      "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=500&h=750&fit=crop",
+      "https://images.unsplash.com/photo-1614728672820-e88260ce6d0d?w=500&h=750&fit=crop",
     backdrop:
-      "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=1920&h=1080&fit=crop",
+      "https://images.unsplash.com/photo-1614728672820-e88260ce6d0d?w=1920&h=1080&fit=crop",
     genre: "Social Science",
     year: 2022,
     duration: "45m",
     rating: "4.6",
-    description: "Exploring continents, countries, and cultures.",
-    instructor: "Ms. Carmen Sandiego",
+    description:
+      "Map out the world's landforms, climates, and diverse cultures.",
+    instructor: "Ms. National Geographic",
     featured: false,
-    videoUrl:
-      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
-    classLevel: 9,
+    videoUrl: "https://www.youtube.com/watch?v=VGxssWl99U8",
+    classLevel: 8,
   },
   {
     id: 9,
-    title: "Introduction to Psychology",
-    thumbnail:
-      "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=500&h=750&fit=crop",
-    backdrop:
-      "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=1920&h=1080&fit=crop",
+    title: "Emotions and the Brain",
+    thumbnail: "https://img.youtube.com/vi/baAnFPcu6iA/hqdefault.jpg",
+    backdrop: "https://img.youtube.com/vi/baAnFPcu6iA/maxresdefault.jpg",
     genre: "Social Science",
     year: 2023,
     duration: "50m",
     rating: "4.8",
-    description: "Understanding the human mind and behavior.",
-    instructor: "Prof. Jordan Peterson",
+    description:
+      "Understand how feelings work and strategies for emotional well-being.",
+    instructor: "Prof. Daniel Siegel",
     featured: true,
-    videoUrl:
-      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
-    classLevel: 12,
+    videoUrl: "https://www.youtube.com/watch?v=baAnFPcu6iA",
+    classLevel: 11,
   },
   {
     id: 10,
-    title: "Macroeconomics",
+    title: "Money Matters for Kids",
     thumbnail:
-      "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=500&h=750&fit=crop",
+      "https://plus.unsplash.com/premium_photo-1723759272392-13425933e399?w=500&h=750&fit=crop",
     backdrop:
-      "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=1920&h=1080&fit=crop",
+      "https://plus.unsplash.com/premium_photo-1723759272392-13425933e399?w=1920&h=1080&fit=crop",
     genre: "Social Science",
     year: 2023,
     duration: "1h",
     rating: "4.7",
     description:
-      "Study of the economy as a whole, including inflation, unemployment, and economic growth.",
-    instructor: "Prof. Krugman",
+      "Basics of saving, spending, and understanding currency in a fun way.",
+    instructor: "Prof. Ann McKechin",
     featured: false,
     videoUrl:
-      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
-    classLevel: 11,
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4",
+    classLevel: 9,
   },
   {
     id: 11,
-    title: "Quantum Physics",
+    title: "Stars and Planets Journey",
     thumbnail:
-      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=500&h=750&fit=crop",
+      "https://plus.unsplash.com/premium_photo-1666232903265-ba0419aa3ef7?w=500&h=750&fit=crop",
     backdrop:
-      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&h=1080&fit=crop",
+      "https://plus.unsplash.com/premium_photo-1666232903265-ba0419aa3ef7?w=1920&h=1080&fit=crop",
     genre: "Science",
     year: 2024,
     duration: "1h 20m",
     rating: "4.9",
     description:
-      "The behavior of matter and energy on the atomic and subatomic scale.",
-    instructor: "Dr. Feynman",
+      "Voyage through the solar system and learn about celestial wonders.",
+    instructor: "Dr. Phil Plait",
     featured: true,
     videoUrl:
-      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
-    classLevel: 12,
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+    ageGroup: "17-18",
   },
   {
     id: 12,
-    title: "Human Anatomy",
+    title: "Healthy Body Basics",
     thumbnail:
-      "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=500&h=750&fit=crop",
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&h=750&fit=crop",
     backdrop:
-      "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1920&h=1080&fit=crop",
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1920&h=1080&fit=crop",
     genre: "Science",
     year: 2022,
     duration: "55m",
     rating: "4.8",
-    description: "Detailed study of the structure of the human body.",
-    instructor: "Dr. Gray",
+    description: "Interactive guide to organs, nutrition, and staying active.",
+    instructor: "Dr. Nadine Burke Harris",
     featured: false,
     videoUrl:
-      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
-    classLevel: 10,
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4",
+    classLevel: 9,
   },
   {
     id: 13,
-    title: "European History",
-    thumbnail:
-      "https://images.unsplash.com/photo-1599930113854-d6d7fd521f10?w=500&h=750&fit=crop",
-    backdrop:
-      "https://images.unsplash.com/photo-1599930113854-d6d7fd521f10?w=1920&h=1080&fit=crop",
+    title: "Renaissance Artists and Inventors",
+    thumbnail: "https://img.youtube.com/vi/shnzzzISMN4/hqdefault.jpg",
+    backdrop: "https://img.youtube.com/vi/shnzzzISMN4/maxresdefault.jpg",
     genre: "History",
     year: 2021,
     duration: "45m",
     rating: "4.6",
-    description: "From the Renaissance to the modern era.",
-    instructor: "Prof. Davies",
+    description:
+      "Meet Leonardo da Vinci and the innovations that changed the world.",
+    instructor: "Prof. Ross King",
     featured: false,
-    videoUrl:
-      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
-    classLevel: 9,
+    videoUrl: "https://www.youtube.com/watch?v=shnzzzISMN4",
+    classLevel: 10,
   },
   {
     id: 14,
-    title: "Statistics 101",
+    title: "Data and Graphs for Beginners",
     thumbnail:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=750&fit=crop",
+      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=500&h=750&fit=crop",
     backdrop:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1920&h=1080&fit=crop",
+      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1920&h=1080&fit=crop",
     genre: "Mathematics",
     year: 2023,
     duration: "50m",
     rating: "4.7",
     description:
-      "Data collection, analysis, interpretation, presentation, and organization.",
-    instructor: "Prof. Fisher",
+      "Collect data and create colorful charts to tell stories with numbers.",
+    instructor: "Prof. Gary Bitter",
     featured: false,
     videoUrl:
-      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
-    classLevel: 11,
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4",
+    classLevel: 10,
   },
   {
     id: 15,
-    title: "Creative Writing II",
+    title: "Poetry in Motion",
     thumbnail:
-      "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=500&h=750&fit=crop",
+      "https://images.unsplash.com/photo-1517457373958-b7bdd458720e?w=500&h=750&fit=crop",
     backdrop:
-      "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=1920&h=1080&fit=crop",
+      "https://images.unsplash.com/photo-1517457373958-b7bdd458720e?w=1920&h=1080&fit=crop",
     genre: "Arts",
     year: 2022,
     duration: "40m",
     rating: "4.8",
-    description: "Advanced techniques in fiction and non-fiction writing.",
-    instructor: "Margaret Atwood",
+    description:
+      "Craft poems that dance with rhythm, rhyme, and vivid imagery.",
+    instructor: "Kwame Alexander",
     featured: true,
     videoUrl:
-      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
-    classLevel: 10,
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4",
+    classLevel: 9,
   },
 ];
 
 export const courses = [
   {
     id: 101,
-    title: "Complete Web Development Bootcamp",
-    thumbnail:
-      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=500&h=750&fit=crop",
-    backdrop:
-      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1920&h=1080&fit=crop",
+    title: "The Most Amazing Inventions in History",
+    thumbnail: "https://img.youtube.com/vi/Wy-hpxQqm0U/hqdefault.jpg",
+    backdrop: "https://img.youtube.com/vi/Wy-hpxQqm0U/maxresdefault.jpg",
     genre: "Technology",
     year: 2023,
     modules: 12,
     lessons: 150,
     rating: "5.0",
     description:
-      "Become a full-stack web developer with this comprehensive bootcamp covering HTML, CSS, JavaScript, React, and Node.js.",
-    instructor: "Dr. Angela Yu",
+      "Explore groundbreaking inventions from the wheel to the internet.",
+    instructor: "Reshma Saujani",
     featured: true,
-    videoUrl:
-      "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4",
-    classLevel: 12,
+    videoUrl: "https://www.youtube.com/watch?v=Wy-hpxQqm0U",
+    classLevel: 8,
   },
-  {
-    id: 102,
-    title: "Machine Learning A-Z",
-    thumbnail:
-      "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=500&h=750&fit=crop",
-    backdrop:
-      "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=1920&h=1080&fit=crop",
-    genre: "Technology",
-    year: 2022,
-    modules: 10,
-    lessons: 80,
-    rating: "4.8",
-    description:
-      "Dive into the world of AI and Machine Learning. Master algorithms, data preprocessing, and model evaluation.",
-    instructor: "Andrew Ng",
-    featured: false,
-    videoUrl:
-      "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4",
-    classLevel: 11,
-  },
-  {
-    id: 103,
-    title: "Financial Literacy 101",
-    thumbnail:
-      "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=500&h=750&fit=crop",
-    backdrop:
-      "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=1920&h=1080&fit=crop",
-    genre: "Finance",
-    year: 2023,
-    modules: 5,
-    lessons: 25,
-    rating: "4.9",
-    description:
-      "Learn how to manage your money, invest wisely, and plan for a secure financial future.",
-    instructor: "Warren Buffett",
-    featured: false,
-    videoUrl:
-      "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4",
-    classLevel: 10,
-  },
+  // {
+  //   id: 102,
+  //   title: "Young Scientists Lab",
+  //   thumbnail:
+  //     "https://images.unsplash.com/photo-1758685848561-3658f433e6a0?w=500&h=750&fit=crop",
+  //   backdrop:
+  //     "https://images.unsplash.com/photo-1758685848561-3658f433e6a0?w=1920&h=1080&fit=crop",
+  //   genre: "Science",
+  //   year: 2022,
+  //   modules: 10,
+  //   lessons: 80,
+  //   rating: "4.8",
+  //   description:
+  //     "Hands-on experiments in physics, chemistry, and biology to ignite curiosity.",
+  //   instructor: "Bill Nye",
+  //   featured: false,
+  //   videoUrl:
+  //     "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+  //   classLevel: 10,
+  // },
+  // {
+  //   id: 103,
+  //   title: "Smart Money Habits",
+  //   thumbnail:
+  //     "https://images.unsplash.com/photo-1598033124237-65c7d0e50191?w=500&h=750&fit=crop",
+  //   backdrop:
+  //     "https://images.unsplash.com/photo-1598033124237-65c7d0e50191?w=1920&h=1080&fit=crop",
+  //   genre: "Finance",
+  //   year: 2023,
+  //   modules: 5,
+  //   lessons: 25,
+  //   rating: "4.9",
+  //   description:
+  //     "Fun lessons on budgeting, earning, and growing money through games and stories.",
+  //   instructor: "Dave Ramsey Jr.",
+  //   featured: false,
+  //   videoUrl:
+  //     "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/VolkswagenGTIReview.mp4",
+  //   classLevel: 9,
+  // },
   {
     id: 104,
-    title: "Digital Photography Masterclass",
-    thumbnail:
-      "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=500&h=750&fit=crop",
-    backdrop:
-      "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=1920&h=1080&fit=crop",
+    title: "10 Channels for Home-school Kids",
+    thumbnail: "https://img.youtube.com/vi/gxCP68xIR5Y/hqdefault.jpg",
+    backdrop: "https://img.youtube.com/vi/gxCP68xIR5Y/maxresdefault.jpg",
     genre: "Arts",
     year: 2021,
     modules: 8,
     lessons: 40,
     rating: "4.7",
     description:
-      "Take stunning photos with any camera. Learn composition, lighting, editing, and more.",
-    instructor: "Annie Leibovitz",
+      "Explore art, music, and creativity with engaging activities for home-schoolers.",
+    instructor: "National Geographic Kids",
     featured: false,
-    videoUrl:
-      "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4",
-    classLevel: 9,
+    videoUrl: "https://www.youtube.com/watch?v=gxCP68xIR5Y",
+    classLevel: 8,
   },
-  {
-    id: 105,
-    title: "Data Science Bootcamp",
-    thumbnail:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=750&fit=crop",
-    backdrop:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1920&h=1080&fit=crop",
-    genre: "Technology",
-    year: 2023,
-    modules: 15,
-    lessons: 120,
-    rating: "4.9",
-    description: "Master Python, SQL, and Machine Learning for Data Science.",
-    instructor: "Jose Portilla",
-    featured: true,
-    videoUrl:
-      "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
-    classLevel: 12,
-  },
+  // {
+  //   id: 105,
+  //   title: "Data Detectives Bootcamp",
+  //   thumbnail: "https://img.youtube.com/vi/aDrLD-KznvI/hqdefault.jpg",
+  //   backdrop: "https://img.youtube.com/vi/aDrLD-KznvI/maxresdefault.jpg",
+  //   genre: "Technology",
+  //   year: 2023,
+  //   modules: 15,
+  //   lessons: 120,
+  //   rating: "4.9",
+  //   description:
+  //     "Uncover patterns in data using simple tools and real-life mysteries.",
+  //   instructor: "DJ Patil",
+  //   featured: true,
+  //   videoUrl: "https://www.youtube.com/watch?v=aDrLD-KznvI",
+  //   classLevel: 11,
+  // },
   {
     id: 106,
-    title: "UX/UI Design Fundamentals",
-    thumbnail:
-      "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=500&h=750&fit=crop",
-    backdrop:
-      "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1920&h=1080&fit=crop",
+    title: "Design Thinking for Young Innovators",
+    thumbnail: "https://img.youtube.com/vi/B9USbZDbru0/hqdefault.jpg",
+    backdrop: "https://img.youtube.com/vi/B9USbZDbru0/maxresdefault.jpg",
     genre: "Design",
     year: 2022,
     modules: 8,
     lessons: 60,
     rating: "4.8",
-    description: "Learn to design beautiful and functional user interfaces.",
-    instructor: "Don Norman",
+    description:
+      "Solve problems creatively with empathy, ideation, and prototyping.",
+    instructor: "Tim Brown",
     featured: false,
-    videoUrl:
-      "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
-    classLevel: 11,
+    videoUrl: "https://www.youtube.com/watch?v=B9USbZDbru0",
+    classLevel: 10,
   },
   {
     id: 107,
-    title: "Digital Marketing Mastery",
+    title: "Eco-Warriors Marketing",
     thumbnail:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&h=750&fit=crop",
+      "https://images.unsplash.com/photo-1551671658-2582f66410ca?w=500&h=750&fit=crop",
     backdrop:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1920&h=1080&fit=crop",
+      "https://images.unsplash.com/photo-1551671658-2582f66410ca?w=1920&h=1080&fit=crop",
     genre: "Business",
     year: 2023,
     modules: 10,
     lessons: 80,
     rating: "4.7",
-    description: "SEO, Social Media, Email Marketing, and more.",
-    instructor: "Seth Godin",
+    description: "Spread green messages using social media and storytelling.",
+    instructor: "Van Jones",
     featured: false,
     videoUrl:
-      "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
-    classLevel: 12,
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+    classLevel: 11,
   },
   {
     id: 108,
-    title: "Public Speaking",
-    thumbnail:
-      "https://images.unsplash.com/photo-1475721027767-4d06338ac966?w=500&h=750&fit=crop",
-    backdrop:
-      "https://images.unsplash.com/photo-1475721027767-4d06338ac966?w=1920&h=1080&fit=crop",
+    title: "Confidence Building Speeches",
+    thumbnail: "https://img.youtube.com/vi/shnzzzISMN4/hqdefault.jpg",
+    backdrop: "https://img.youtube.com/vi/shnzzzISMN4/maxresdefault.jpg",
     genre: "Personal Development",
     year: 2021,
     modules: 6,
     lessons: 30,
     rating: "4.8",
-    description: "Overcome stage fright and deliver powerful presentations.",
-    instructor: "Chris Anderson",
+    description:
+      "Practice speaking with fun prompts and positive feedback loops.",
+    instructor: "Julian Treasure",
     featured: false,
-    videoUrl:
-      "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
-    classLevel: 10,
+    videoUrl: "https://www.youtube.com/watch?v=shnzzzISMN4",
+    classLevel: 9,
   },
   {
     id: 109,
-    title: "Personal Finance",
+    title: "Family Budget Challenge",
     thumbnail:
-      "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=500&h=750&fit=crop",
+      "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=500&h=750&fit=crop",
     backdrop:
-      "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=1920&h=1080&fit=crop",
+      "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1920&h=1080&fit=crop",
     genre: "Finance",
     year: 2023,
     modules: 5,
     lessons: 25,
     rating: "4.9",
-    description: "Budgeting, saving, and investing for beginners.",
-    instructor: "Ramit Sethi",
+    description:
+      "Family activities to learn about expenses, income, and financial goals.",
+    instructor: "Suze Orman",
     featured: true,
     videoUrl:
-      "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
-    classLevel: 11,
+      "https://archive.org/download/schoolhouse-rock-30th/48%20Where%20The%20Money%20Goes.mp4",
+    classLevel: 10,
   },
   {
     id: 110,
-    title: "Ethical Hacking",
+    title: "Cyber Safety Heroes",
     thumbnail:
-      "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=500&h=750&fit=crop",
+      "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=500&h=750&fit=crop",
     backdrop:
-      "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=1920&h=1080&fit=crop",
+      "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1920&h=1080&fit=crop",
     genre: "Technology",
     year: 2024,
     modules: 12,
     lessons: 100,
     rating: "4.8",
-    description: "Learn network security and penetration testing.",
-    instructor: "Kevin Mitnick",
+    description:
+      "Stay safe online with tips on privacy, sharing, and digital citizenship.",
+    instructor: "Parisa Tabriz",
     featured: false,
     videoUrl:
-      "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
-    classLevel: 12,
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WhatCarCanYouGetForAGrand.mp4",
+    classLevel: 11,
   },
   {
     id: 111,
-    title: "Mobile App Development",
-    thumbnail:
-      "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=500&h=750&fit=crop",
-    backdrop:
-      "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=1920&h=1080&fit=crop",
+    title: "App Invention Workshop",
+    thumbnail: "https://img.youtube.com/vi/Wy-hpxQqm0U/hqdefault.jpg",
+    backdrop: "https://img.youtube.com/vi/Wy-hpxQqm0U/maxresdefault.jpg",
     genre: "Technology",
     year: 2023,
     modules: 14,
     lessons: 110,
     rating: "4.7",
-    description: "Build iOS and Android apps with React Native.",
-    instructor: "Maximilian Schwarzmüller",
+    description:
+      "Design and prototype mobile apps solving everyday kid problems.",
+    instructor: "Kate Compton",
     featured: false,
-    videoUrl:
-      "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
-    classLevel: 11,
+    videoUrl: "https://www.youtube.com/watch?v=Wy-hpxQqm0U",
+    classLevel: 10,
   },
   {
     id: 112,
-    title: "Graphic Design Masterclass",
-    thumbnail:
-      "https://images.unsplash.com/photo-1626785774573-4b799314346d?w=500&h=750&fit=crop",
-    backdrop:
-      "https://images.unsplash.com/photo-1626785774573-4b799314346d?w=1920&h=1080&fit=crop",
+    title: "Digital Art Studio",
+    thumbnail: "https://img.youtube.com/vi/gxCP68xIR5Y/hqdefault.jpg",
+    backdrop: "https://img.youtube.com/vi/gxCP68xIR5Y/maxresdefault.jpg",
     genre: "Design",
     year: 2022,
     modules: 9,
     lessons: 70,
     rating: "4.8",
-    description: "Learn Photoshop, Illustrator, and InDesign.",
-    instructor: "Lindsay Marsh",
+    description:
+      "Explore tools like digital painting and vector graphics for fun creations.",
+    instructor: "Lisa Holloway",
     featured: false,
-    videoUrl:
-      "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
-    classLevel: 10,
+    videoUrl: "https://www.youtube.com/watch?v=gxCP68xIR5Y",
+    classLevel: 9,
   },
   {
     id: 113,
-    title: "Project Management PMP",
+    title: "Team Leadership Games",
     thumbnail:
-      "https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?w=500&h=750&fit=crop",
+      "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=500&h=750&fit=crop",
     backdrop:
-      "https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?w=1920&h=1080&fit=crop",
+      "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1920&h=1080&fit=crop",
     genre: "Business",
     year: 2023,
     modules: 10,
     lessons: 50,
     rating: "4.6",
-    description: "Prepare for the PMP certification exam.",
-    instructor: "Joseph Phillips",
+    description:
+      "Build leadership skills through collaborative projects and challenges.",
+    instructor: "Simon Sinek",
     featured: false,
     videoUrl:
-      "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
     classLevel: 12,
   },
   {
     id: 114,
-    title: "Blockchain Basics",
+    title: "Future Tech Explorers",
     thumbnail:
-      "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=500&h=750&fit=crop",
+      "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=500&h=750&fit=crop",
     backdrop:
-      "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=1920&h=1080&fit=crop",
+      "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=1920&h=1080&fit=crop",
     genre: "Technology",
     year: 2024,
     modules: 6,
     lessons: 30,
     rating: "4.7",
-    description: "Understand how blockchain and cryptocurrencies work.",
-    instructor: "Vitalik Buterin",
+    description:
+      "Dive into AI, robots, and emerging tech with ethical discussions.",
+    instructor: "Fei-Fei Li",
     featured: true,
     videoUrl:
-      "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
-    classLevel: 11,
-  },
-];
-
-export const scholarships = [
-  {
-    id: 1,
-    title: "PM Yasasvi Scholarship Scheme",
-    provider: "Ministry of Social Justice & Empowerment",
-    amount: "₹75,000 - ₹1,25,000",
-    deadline: "2025-08-31",
-    category: "Merit-cum-Means",
-    description:
-      "Financial assistance for OBC, EBC, and DNT students studying in top-class schools and colleges across India.",
-    eligibility: "Class 9-12 students, Family income < ₹2.5L",
-    image:
-      "https://www.pmindia.gov.in/wp-content/uploads/2025/11/H20251127197887.jpg",
-  },
-  {
-    id: 2,
-    title: "Tata Trusts Medical and Healthcare Scholarship",
-    provider: "Tata Trusts",
-    amount: "₹50,000 - ₹1,00,000",
-    deadline: "2025-06-30",
-    category: "Medical",
-    description:
-      "Supporting meritorious students pursuing undergraduate and postgraduate degrees in Medical and Healthcare sciences.",
-    eligibility: "Medical/Healthcare students with > 60% marks",
-    image:
-      "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=500&h=300&fit=crop",
-  },
-  {
-    id: 3,
-    title: "Wipro's Underprivileged Women Scholarship",
-    provider: "Wipro Cares",
-    amount: "₹24,000/year",
-    deadline: "2025-09-15",
-    category: "Women Empowerment",
-    description:
-      "Empowering young women from underprivileged backgrounds to pursue higher education after Class 12.",
-    eligibility: "Girls who passed Class 12 from govt schools",
-    image:
-      "https://thecsruniverse.com/adminxsafe/uploads/IMG-20240703-WA0003.jpg",
-  },
-  {
-    id: 4,
-    title: "HDFC Bank Parivartan's ECSS",
-    provider: "HDFC Bank",
-    amount: "Up to ₹75,000",
-    deadline: "2025-07-31",
-    category: "Crisis Support",
-    description:
-      "Educational Crisis Scholarship Support for students facing personal or family crises that threaten their education.",
-    eligibility: "Students facing financial crisis",
-    image:
-      "https://images.unsplash.com/photo-1544717305-2782549b5136?w=500&h=300&fit=crop",
-  },
-  {
-    id: 5,
-    title: "INSPIRE Scholarship",
-    provider: "Department of Science & Technology",
-    amount: "₹80,000/year",
-    deadline: "2025-10-31",
-    category: "Science & Research",
-    description:
-      "Innovation in Science Pursuit for Inspired Research (INSPIRE) for students pursuing courses in Natural and Basic Sciences.",
-    eligibility: "Top 1% in Class 12 or JEE/NEET rank holders",
-    image:
-      "https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=500&h=300&fit=crop",
+      "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+    classLevel: 10,
   },
 ];
 

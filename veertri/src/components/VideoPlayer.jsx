@@ -16,14 +16,22 @@ const VideoPlayer = ({ videoUrl, thumbnail, title }) => {
   const [showControls, setShowControls] = useState(true);
   const videoRef = useRef(null);
 
-  const togglePlay = () => {
+  const togglePlay = async () => {
     if (videoRef.current) {
-      if (isPlaying) {
-        videoRef.current.pause();
-      } else {
-        videoRef.current.play();
+      try {
+        if (isPlaying) {
+          videoRef.current.pause();
+        } else {
+          await videoRef.current.play();
+        }
+        setIsPlaying(!isPlaying);
+      } catch (error) {
+        console.error("Playback error:", error);
+        // If play was interrupted, ensure state matches reality
+        if (videoRef.current.paused) {
+          setIsPlaying(false);
+        }
       }
-      setIsPlaying(!isPlaying);
     }
   };
 
@@ -46,7 +54,7 @@ const VideoPlayer = ({ videoUrl, thumbnail, title }) => {
     const rect = e.currentTarget.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const percentage = (x / rect.width) * 100;
-    if (videoRef.current) {
+    if (videoRef.current && Number.isFinite(videoRef.current.duration)) {
       videoRef.current.currentTime =
         (percentage / 100) * videoRef.current.duration;
       setProgress(percentage);
@@ -69,17 +77,35 @@ const VideoPlayer = ({ videoUrl, thumbnail, title }) => {
     }
   };
 
-  const isYoutube = videoUrl && videoUrl.includes("youtube.com/embed");
+  const getEmbedUrl = (url) => {
+    if (!url) return null;
+    if (url.includes("youtube.com/embed")) return url;
+    if (url.includes("youtube.com/watch")) {
+      const videoId = url.split("v=")[1]?.split("&")[0];
+      return `https://www.youtube.com/embed/${videoId}`;
+    }
+    if (url.includes("youtu.be/")) {
+      const videoId = url.split("youtu.be/")[1]?.split("?")[0];
+      return `https://www.youtube.com/embed/${videoId}`;
+    }
+    return null;
+  };
+
+  const isYoutube =
+    videoUrl &&
+    (videoUrl.includes("youtube.com") || videoUrl.includes("youtu.be"));
 
   if (isYoutube) {
+    const embedUrl = getEmbedUrl(videoUrl);
     return (
       <div className="relative w-full aspect-video bg-black flex items-center justify-center">
         <iframe
-          src={`${videoUrl}?autoplay=1&rel=0`}
+          src={`${embedUrl}?autoplay=0&rel=0`}
           title={title}
           className="w-full h-full"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
+          sandbox="allow-same-origin allow-scripts allow-presentation allow-popups"
         ></iframe>
       </div>
     );

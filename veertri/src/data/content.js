@@ -1,9 +1,10 @@
 import { educationalVideos, courses } from "./education";
+import { entertainmentContent } from "./entertainment";
 import { getContentBySubjectAndClass, boards } from "./subjects";
 
 export const getContentById = (id) => {
   // Check if ID is a dynamic string ID (e.g., "CBSE-10-Science-0")
-  if (typeof id === "string" && id.includes("-")) {
+  if (typeof id === "string" && id.includes("-") && !id.startsWith("ent-")) {
     const parts = id.split("-");
 
     // Check if the first part is a board
@@ -39,7 +40,7 @@ export const getContentById = (id) => {
     }
   }
 
-  return [...educationalVideos, ...courses].find(
+  return [...educationalVideos, ...courses, ...entertainmentContent].find(
     (item) => item.id == id // Use loose equality to match string/number
   );
 };
