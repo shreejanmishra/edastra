@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { getContentById } from "../data/content";
 import { educationalVideos, courses } from "../data/education";
+import { entertainmentContent } from "../data/entertainment";
 
 const VideoPlayer = lazy(() => import("../components/VideoPlayer"));
 
@@ -44,7 +45,7 @@ const VideoDetail = () => {
 
     // Get similar content (same genre)
     if (item) {
-      const all = [...educationalVideos, ...courses];
+      const all = [...educationalVideos, ...courses, ...entertainmentContent];
       const similar = all
         .filter((c) => c.genre === item.genre && c.id !== item.id)
         .slice(0, 6);

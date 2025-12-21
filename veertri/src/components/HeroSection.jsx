@@ -1,11 +1,33 @@
 import { Play, Info, Volume2, VolumeX } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const HeroSection = ({ content, isCompact = false }) => {
   const [isMuted, setIsMuted] = useState(true);
+  const [videoLoaded, setVideoLoaded] = useState(false);
 
   if (!content) return null;
+
+  const getEmbedUrl = (url) => {
+    if (!url) return null;
+    if (url.includes("youtube.com/embed")) return url;
+    if (url.includes("youtube.com/watch")) {
+      const videoId = url.split("v=")[1]?.split("&")[0];
+      return `https://www.youtube.com/embed/${videoId}`;
+    }
+    if (url.includes("youtu.be/")) {
+      const videoId = url.split("youtu.be/")[1]?.split("?")[0];
+      return `https://www.youtube.com/embed/${videoId}`;
+    }
+    return null;
+  };
+
+  const isYoutube =
+    content.videoUrl &&
+    (content.videoUrl.includes("youtube.com") ||
+      content.videoUrl.includes("youtu.be"));
+  const embedUrl = isYoutube ? getEmbedUrl(content.videoUrl) : null;
+  const videoId = isYoutube ? embedUrl.split("/").pop() : null;
 
   return (
     <div
@@ -14,12 +36,45 @@ const HeroSection = ({ content, isCompact = false }) => {
       }`}
     >
       {/* Background Image/Video */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 overflow-hidden">
         <img
           src={content.backdrop}
           alt={content.title}
-          className="w-full h-full object-cover"
+          className={`w-full h-full object-cover transition-opacity duration-700 ${
+            videoLoaded ? "opacity-0" : "opacity-100"
+          }`}
         />
+
+        {content.videoUrl && (
+          <div
+            className={`absolute inset-0 transition-opacity duration-1000 ${
+              videoLoaded ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            {isYoutube ? (
+              <iframe
+                src={`${embedUrl}?autoplay=1&mute=${
+                  isMuted ? 1 : 0
+                }&controls=0&loop=1&playlist=${videoId}&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1`}
+                className="w-full h-full object-cover pointer-events-none scale-[1.35]"
+                allow="autoplay; encrypted-media"
+                onLoad={() => setVideoLoaded(true)}
+                title="Hero Video"
+              />
+            ) : (
+              <video
+                src={content.videoUrl}
+                className="w-full h-full object-cover"
+                autoPlay
+                muted={isMuted}
+                loop
+                playsInline
+                onLoadedData={() => setVideoLoaded(true)}
+              />
+            )}
+          </div>
+        )}
+
         {/* Gradient overlays */}
         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent" />

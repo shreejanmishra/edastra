@@ -33,7 +33,7 @@ const HomePage = () => {
     },
     {
       id: 3,
-      name: "Popular Courses",
+      name: "Discover",
       items: courses.slice(0, 12),
       link: "/home/popular-courses",
     },

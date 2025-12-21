@@ -382,7 +382,7 @@ const Subjects = () => {
     const saved = localStorage.getItem("selectedClass");
     if (saved === "Pre-school") return "Pre-school";
     if (saved) return parseInt(saved);
-    return 10;
+    return "Pre-school";
   });
   const [selectedBoard, setSelectedBoard] = useState("CBSE");
   const [heroContent, setHeroContent] = useState(null);
@@ -395,7 +395,11 @@ const Subjects = () => {
     const lastViewedId = localStorage.getItem("lastViewedVideoId");
     let content = null;
     // Only use last viewed if it is a subject video (has dash in ID)
-    if (lastViewedId && lastViewedId.includes("-")) {
+    if (
+      lastViewedId &&
+      lastViewedId.includes("-") &&
+      !lastViewedId.startsWith("ent-")
+    ) {
       content = getContentById(lastViewedId);
     }
 

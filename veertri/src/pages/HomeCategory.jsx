@@ -26,8 +26,8 @@ const HomeCategory = () => {
         // Sort by year descending, or just take the second half
         items = [...educationalVideos].sort((a, b) => b.year - a.year);
         break;
-      case "popular-courses":
-        title = "Popular Courses";
+      case "Discover":
+        title = "";
         items = [...courses];
         break;
       case "top-rated":
