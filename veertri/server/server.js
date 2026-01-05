@@ -57,8 +57,8 @@ const preLaunchSchema = new mongoose.Schema({
   },
   email: {
     type: String,
-    required: true,
-    unique: true,
+    required: false,
+    sparse: true,
     match: [/^\S+@\S+\.\S+$/, "Please use a valid email address"],
   },
   age: {
@@ -96,14 +96,16 @@ app.post("/api/pre-launch", async (req, res) => {
       req.body;
 
     // Basic validation
-    if (!firstName || !lastName || !email || !age || !phoneNumber || !gender) {
-      return res.status(400).json({ message: "All fields are required" });
+    if (!firstName || !lastName || !age || !phoneNumber || !gender) {
+      return res.status(400).json({ message: "All required fields must be filled" });
     }
 
-    // Check if email already exists
-    const existingUser = await PreLaunchUser.findOne({ email });
-    if (existingUser) {
-      return res.status(400).json({ message: "Email already registered" });
+    // Check if email already exists (only if email is provided)
+    if (email) {
+      const existingUser = await PreLaunchUser.findOne({ email });
+      if (existingUser) {
+        return res.status(400).json({ message: "Email already registered" });
+      }
     }
 
     const newUser = new PreLaunchUser({
