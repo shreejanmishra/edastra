@@ -135,14 +135,13 @@ const PreLaunch = () => {
 
             <div>
               <label className="block text-sm font-medium text-gray-300 mb-1">
-                Email Address
+                Email Address (Optional)
               </label>
               <input
                 type="email"
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                required
                 className="w-full bg-gray-700/50 border border-gray-600 rounded px-3 py-2 text-white focus:outline-none focus:border-[#FAD502] focus:ring-1 focus:ring-[#FAD502] transition-colors"
                 placeholder="ram@gmail.com"
               />
