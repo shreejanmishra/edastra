@@ -17,31 +17,55 @@ app.use(cors());
 app.use(express.json());
 
 // MongoDB Connection
+// MongoDB Connection
 const MONGO_URI = process.env.MONGO_URI || "mongodb://localhost:27017/veertri";
 
+let cachedDb = null;
+
 const connectDB = async () => {
+  if (cachedDb) {
+    if (mongoose.connection.readyState === 1) {
+      return cachedDb;
+    }
+  }
+
   try {
-    await mongoose.connect(MONGO_URI, {
+    const db = await mongoose.connect(MONGO_URI, {
       serverSelectionTimeoutMS: 5000,
       socketTimeoutMS: 45000,
+      bufferCommands: false, // Disable buffering
     });
+
     console.log("✅ MongoDB connected successfully");
     console.log(`📍 Connected to: ${mongoose.connection.host}`);
+
+    cachedDb = db;
+    return db;
   } catch (err) {
     console.error("❌ MongoDB connection error:", err.message);
-    process.exit(1);
+    // Don't exit the process in serverless!
+    // process.exit(1);
+    throw err;
   }
 };
 
-mongoose.connection.on("disconnected", () => {
-  console.log("⚠️ MongoDB disconnected");
-});
+// Middleware to ensure DB is connected before handling requests
+app.use(async (req, res, next) => {
+  // fast-fail for static assets if any inadvertently pass through
+  if (req.path.includes(".")) return next();
 
-mongoose.connection.on("error", (err) => {
-  console.error("❌ MongoDB error:", err);
+  try {
+    await connectDB();
+    next();
+  } catch (error) {
+    console.error("Database connection failed for request:", error);
+    res.status(500).json({
+      message: "Database connection failed",
+      error: error.message,
+      hint: "Check MONGO_URI environment variable",
+    });
+  }
 });
-
-connectDB();
 
 // Schema
 const preLaunchSchema = new mongoose.Schema({
