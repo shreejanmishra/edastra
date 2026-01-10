@@ -47,7 +47,15 @@ const ROIPage = () => {
         `/api/roi?page=${currentPage}&limit=${itemsPerPage}`
       );
       if (!response.ok) {
-        throw new Error("Failed to fetch data");
+        let errorMessage = `Error ${response.status}: ${response.statusText}`;
+        try {
+          const errorData = await response.json();
+          if (errorData.message) errorMessage = errorData.message;
+          if (errorData.error) errorMessage += ` (${errorData.error})`;
+        } catch (e) {
+          // Could not parse JSON, stick to status text
+        }
+        throw new Error(errorMessage);
       }
       const data = await response.json();
 
@@ -62,7 +70,7 @@ const ROIPage = () => {
       setLoading(false);
     } catch (err) {
       console.error("Error fetching ROI data:", err);
-      setError("Failed to load user activity data");
+      setError(err.message);
       setLoading(false);
     }
   };
