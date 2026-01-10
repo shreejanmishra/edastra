@@ -5,7 +5,7 @@ import {
   educationalVideos,
   courses,
 } from "../data/education";
-import { useEffect, useState, Suspense, lazy } from "react";
+import { useEffect, useState, Suspense, lazy, useMemo } from "react";
 import bgImage from "../assets/bgImage2.jpg";
 
 const CategoryRow = lazy(() => import("../components/CategoryRow"));
@@ -18,35 +18,38 @@ const HomePage = () => {
   }, []);
 
   // Define Home Page Categories
-  const homeCategories = [
-    {
-      id: 1,
-      name: "Trending Now",
-      items: [...educationalVideos.slice(0, 8), ...courses.slice(0, 5)],
-      link: "/home/trending",
-    },
-    {
-      id: 2,
-      name: "New Educational Videos",
-      items: educationalVideos.slice(0, 12),
-      link: "/home/new-educational",
-    },
-    {
-      id: 3,
-      name: "Discover",
-      items: courses.slice(0, 12),
-      link: "/home/popular-courses",
-    },
-    {
-      id: 4,
-      name: "Top Rated",
-      items: [
-        ...educationalVideos.filter((m) => parseFloat(m.rating) >= 4.8),
-        ...courses.filter((t) => parseFloat(t.rating) >= 4.8),
-      ],
-      link: "/home/top-rated",
-    },
-  ];
+  const homeCategories = useMemo(
+    () => [
+      {
+        id: 1,
+        name: "Trending Now",
+        items: [...educationalVideos.slice(0, 8), ...courses.slice(0, 5)],
+        link: "/home/trending",
+      },
+      {
+        id: 2,
+        name: "New Educational Videos",
+        items: educationalVideos.slice(0, 12),
+        link: "/home/new-educational",
+      },
+      {
+        id: 3,
+        name: "Discover",
+        items: courses.slice(0, 12),
+        link: "/home/popular-courses",
+      },
+      {
+        id: 4,
+        name: "Top Rated",
+        items: [
+          ...educationalVideos.filter((m) => parseFloat(m.rating) >= 4.8),
+          ...courses.filter((t) => parseFloat(t.rating) >= 4.8),
+        ],
+        link: "/home/top-rated",
+      },
+    ],
+    []
+  );
 
   return (
     <div
@@ -73,8 +76,8 @@ const HomePage = () => {
                   <p className="text-black/80 text-base md:text-lg font-medium leading-relaxed">
                     Be the first to experience the future of education. We are
                     currently developing an edutainment app and looking for
-                    feedback. Sign up now for 3 months of free premium access on
-                    release.
+                    feedback. Sign up now for 1 month of free premium access on
+                    release. Offer valid for first 1000 users.
                   </p>
                   <p className="text-black mt-2 text-sm md:text-base">
                     <span className="text-black font-bold"> Note:</span> The app

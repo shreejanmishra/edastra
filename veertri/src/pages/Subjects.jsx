@@ -6,7 +6,7 @@ import {
   getSubjectHeaderImage,
 } from "../data/subjects";
 import { getContentById } from "../data/content";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useMemo, useCallback } from "react";
 import {
   ChevronLeft,
   ChevronRight,
@@ -202,7 +202,16 @@ const SubjectContentRow = ({ title, selectedClass, selectedBoard }) => {
   const [isExpanded, setIsExpanded] = useState(true);
   const rowRef = useRef(null);
 
-  const calculateStats = (currentItems) => {
+  // Read localStorage once on mount to avoid repeated reads
+  const completedData = useMemo(() => {
+    return {
+      videos: JSON.parse(localStorage.getItem("completedVideos") || "[]"),
+      exercises: JSON.parse(localStorage.getItem("completedExercises") || "[]"),
+      tests: JSON.parse(localStorage.getItem("completedTests") || "[]"),
+    };
+  }, []);
+
+  const calculateStats = useCallback((currentItems, currentCompletedData) => {
     if (!currentItems || currentItems.length === 0)
       return {
         videos: { completed: 0, total: 0, percentage: 0 },
@@ -210,24 +219,14 @@ const SubjectContentRow = ({ title, selectedClass, selectedBoard }) => {
         tests: { completed: 0, total: 0, percentage: 0 },
       };
 
-    const completedVideos = JSON.parse(
-      localStorage.getItem("completedVideos") || "[]"
-    );
-    const completedExercises = JSON.parse(
-      localStorage.getItem("completedExercises") || "[]"
-    );
-    const completedTests = JSON.parse(
-      localStorage.getItem("completedTests") || "[]"
-    );
-
     const videoCount = currentItems.filter((item) =>
-      completedVideos.includes(item.id)
+      currentCompletedData.videos.includes(item.id)
     ).length;
     const exerciseCount = currentItems.filter((item) =>
-      completedExercises.includes(item.id)
+      currentCompletedData.exercises.includes(item.id)
     ).length;
     const testCount = currentItems.filter((item) =>
-      completedTests.includes(item.id)
+      currentCompletedData.tests.includes(item.id)
     ).length;
 
     const total = currentItems.length;
@@ -249,7 +248,7 @@ const SubjectContentRow = ({ title, selectedClass, selectedBoard }) => {
         percentage: Math.round((testCount / total) * 100),
       },
     };
-  };
+  }, []);
 
   useEffect(() => {
     // Filter content based on subject and selected class
@@ -259,11 +258,18 @@ const SubjectContentRow = ({ title, selectedClass, selectedBoard }) => {
       selectedBoard
     );
     setItems(filteredItems);
-    setStats(calculateStats(filteredItems));
-  }, [title, selectedClass, selectedBoard]);
+    setStats(calculateStats(filteredItems, completedData));
+  }, [title, selectedClass, selectedBoard, completedData, calculateStats]);
 
   const handleProgressUpdate = () => {
-    setStats(calculateStats(items));
+    // When a video is completed, we might need to refresh local storage data or just update local stats
+    // Ideally we should reload from local storage here since one item changed
+    const freshCompletedData = {
+      videos: JSON.parse(localStorage.getItem("completedVideos") || "[]"),
+      exercises: JSON.parse(localStorage.getItem("completedExercises") || "[]"),
+      tests: JSON.parse(localStorage.getItem("completedTests") || "[]"),
+    };
+    setStats(calculateStats(items, freshCompletedData));
   };
 
   const scroll = (direction) => {
