@@ -44,7 +44,7 @@ const ROIPage = () => {
     setLoading(true);
     try {
       const response = await fetch(
-        `http://localhost:5000/api/roi?page=${currentPage}&limit=${itemsPerPage}`
+        `/api/roi?page=${currentPage}&limit=${itemsPerPage}`
       );
       if (!response.ok) {
         throw new Error("Failed to fetch data");
@@ -346,7 +346,7 @@ const ROIPage = () => {
               <ArrowLeft className="w-6 h-6" />
             </Link>
             <h1 className="text-3xl font-bold bg-gradient-to-r from-[#FAD502] to-[#ffeba1] bg-clip-text text-transparent">
-              ROI Dashboard
+              Metrics Dashboard
             </h1>
           </div>
           <button
