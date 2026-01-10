@@ -1,6 +1,7 @@
 {
   "name": "veertri-server",
   "version": "1.0.0",
+  "type": "module",
   "description": "Backend for Veertri Pre-launch",
   "main": "server.js",
   "scripts": {
