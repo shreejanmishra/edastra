@@ -1,7 +1,13 @@
-require("dotenv").config();
-const express = require("express");
-const mongoose = require("mongoose");
-const cors = require("cors");
+import dotenv from "dotenv";
+import express from "express";
+import mongoose from "mongoose";
+import cors from "cors";
+import csv from "csv-parser";
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
+
+dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -23,16 +29,10 @@ const connectDB = async () => {
     console.log(`📍 Connected to: ${mongoose.connection.host}`);
   } catch (err) {
     console.error("❌ MongoDB connection error:", err.message);
-    console.error("💡 Please check:");
-    console.error("   1. MongoDB is running (if using local)");
-    console.error("   2. IP is whitelisted in MongoDB Atlas (if using cloud)");
-    console.error("   3. Connection string is correct in .env file");
-    // Exit process with failure
     process.exit(1);
   }
 };
 
-// Handle MongoDB connection events
 mongoose.connection.on("disconnected", () => {
   console.log("⚠️ MongoDB disconnected");
 });
@@ -95,12 +95,12 @@ app.post("/api/pre-launch", async (req, res) => {
     const { firstName, lastName, email, age, phoneNumber, gender, feedback } =
       req.body;
 
-    // Basic validation
     if (!firstName || !lastName || !age || !phoneNumber || !gender) {
-      return res.status(400).json({ message: "All required fields must be filled" });
+      return res
+        .status(400)
+        .json({ message: "All required fields must be filled" });
     }
 
-    // Check if email already exists (only if email is provided)
     if (email) {
       const existingUser = await PreLaunchUser.findOne({ email });
       if (existingUser) {
@@ -119,7 +119,6 @@ app.post("/api/pre-launch", async (req, res) => {
     });
 
     await newUser.save();
-
     res.status(201).json({ message: "Registration successful", user: newUser });
   } catch (error) {
     console.error("Error saving user:", error);
@@ -134,16 +133,207 @@ app.post("/api/pre-launch", async (req, res) => {
   }
 });
 
+app.get("/api/roi", async (req, res) => {
+  try {
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 25;
+    const skip = (page - 1) * limit;
+
+    const count = await PreLaunchUser.countDocuments();
+    const feedbackCount = await PreLaunchUser.countDocuments({
+      feedback: { $exists: true, $ne: "" },
+    });
+
+    const users = await PreLaunchUser.find()
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(limit);
+
+    const graphData = await PreLaunchUser.aggregate([
+      {
+        $project: {
+          date: { $dateToString: { format: "%Y-%m-%d", date: "$createdAt" } },
+          hasFeedback: {
+            $cond: [
+              {
+                $and: [
+                  { $ifNull: ["$feedback", false] },
+                  { $ne: ["$feedback", ""] },
+                ],
+              },
+              1,
+              0,
+            ],
+          },
+        },
+      },
+      {
+        $group: {
+          _id: "$date",
+          users: { $sum: 1 },
+          feedback: { $sum: "$hasFeedback" },
+        },
+      },
+      { $sort: { _id: 1 } },
+    ]);
+
+    const formattedGraphData = graphData.map((item) => ({
+      date: item._id,
+      users: item.users,
+      feedback: item.feedback,
+    }));
+
+    res.json({
+      count, // Total stats
+      feedbackCount, // Total stats
+      users, // Paginated list
+      graphData: formattedGraphData, // Aggregated daily data
+      pagination: {
+        currentPage: page,
+        totalPages: Math.ceil(count / limit),
+        totalItems: count,
+        itemsPerPage: limit,
+      },
+    });
+  } catch (error) {
+    console.error("Error fetching ROI data:", error);
+    res.status(500).json({ message: "Server error", error: error.message });
+  }
+});
+
+// CSV Ingestion Route
+app.get("/api/ingest-csv", async (req, res) => {
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = path.dirname(__filename);
+  const csvPath = path.join(__dirname, "data", "data1_ingest.csv");
+
+  console.log(`Ingesting from: ${csvPath}`);
+  if (!fs.existsSync(csvPath)) {
+    return res.status(404).json({ message: "CSV file not found" });
+  }
+
+  const users = [];
+
+  fs.createReadStream(csvPath)
+    .pipe(csv())
+    .on("data", (row) => {
+      const normalizedRow = {};
+      Object.keys(row).forEach((key) => {
+        normalizedRow[key.toLowerCase().trim()] = row[key];
+      });
+
+      const user = {
+        firstName: normalizedRow["first name"] || normalizedRow["firstname"],
+        lastName: normalizedRow["last name"] || normalizedRow["lastname"],
+        email: normalizedRow["email"],
+        age: normalizedRow["age"],
+        phoneNumber:
+          normalizedRow["phone number"] ||
+          normalizedRow["phonenumber"] ||
+          normalizedRow["phone"],
+        gender: (normalizedRow["gender"] || "").toLowerCase(),
+        feedback: normalizedRow["feedback"] || "",
+        createdAt:
+          normalizedRow["date"] ||
+          normalizedRow["created"] ||
+          normalizedRow["createdat"] ||
+          normalizedRow["timestamp"]
+            ? new Date(
+                normalizedRow["date"] ||
+                  normalizedRow["created"] ||
+                  normalizedRow["createdat"] ||
+                  normalizedRow["timestamp"]
+              )
+            : new Date(),
+      };
+
+      if (user.firstName && user.lastName && user.phoneNumber) {
+        users.push(user);
+      }
+    })
+    .on("end", async () => {
+      try {
+        if (users.length > 0) {
+          const result = await PreLaunchUser.insertMany(users, {
+            ordered: false,
+          });
+          res.json({
+            message: `Successfully inserted ${result.length} users`,
+            totalProcessed: users.length,
+          });
+        } else {
+          res.json({
+            message: "No valid users found in CSV",
+            totalProcessed: 0,
+          });
+        }
+      } catch (error) {
+        // Handle partial insertion (duplicates)
+        if (error.writeErrors) {
+          // BulkWriteError
+          const inserted = error.insertedDocs
+            ? error.insertedDocs.length
+            : users.length - error.writeErrors.length;
+          res.json({
+            message: `Partial success: Inserted ${inserted} users. Some duplicates skipped.`,
+            error: error.message,
+          });
+        } else {
+          res
+            .status(500)
+            .json({ message: "Error inserting data", error: error.message });
+        }
+      }
+    })
+    .on("error", (err) => {
+      res
+        .status(500)
+        .json({ message: "Error reading CSV", error: err.message });
+    });
+});
+
+// Cleanup Endpoint
+app.get("/api/cleanup-bad-data", async (req, res) => {
+  try {
+    // Target specifically the problematic time range (2026-01-10 00:43:46)
+    // Covering both .634 and .640 milliseconds
+    const start = new Date("2026-01-10T00:43:46.000Z");
+    const end = new Date("2026-01-10T00:43:47.000Z");
+
+    const count = await PreLaunchUser.countDocuments({
+      createdAt: { $gte: start, $lte: end },
+    });
+
+    if (count > 0) {
+      const result = await PreLaunchUser.deleteMany({
+        createdAt: { $gte: start, $lte: end },
+      });
+      res.json({
+        message: "Cleanup successful",
+        deletedCount: result.deletedCount,
+        rangeStart: start.toISOString(),
+        rangeEnd: end.toISOString(),
+      });
+    } else {
+      res.json({
+        message: "No matching documents found to delete in this time range.",
+      });
+    }
+  } catch (error) {
+    res
+      .status(500)
+      .json({ message: "Error during cleanup", error: error.message });
+  }
+});
+
 app.get("/", (req, res) => {
   res.send("Veertri Backend is running");
 });
 
-// Start Server (only for local development)
 if (process.env.NODE_ENV !== "production") {
   app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
   });
 }
 
-// Export for Vercel
-module.exports = app;
+export default app;

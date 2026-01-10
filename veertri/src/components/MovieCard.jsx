@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { Play, Clock, Star, Calendar, CheckCircle } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, memo } from "react";
 
-const MovieCard = ({
+const MovieCard = memo(({
   item,
   isLarge = false,
   className = "",
@@ -19,7 +19,7 @@ const MovieCard = ({
     setIsCompleted(completedVideos.includes(item.id));
   }, [item.id]);
 
-  const handleToggleComplete = (e) => {
+  const handleToggleComplete = useCallback((e) => {
     e.preventDefault();
     e.stopPropagation();
 
@@ -35,12 +35,12 @@ const MovieCard = ({
     }
 
     localStorage.setItem("completedVideos", JSON.stringify(newCompletedVideos));
-    setIsCompleted(!isCompleted);
+    setIsCompleted((prev) => !prev);
 
     if (onToggleComplete) {
       onToggleComplete();
     }
-  };
+  }, [item.id, onToggleComplete]);
 
   let widthClass = "";
   if (className) {
@@ -118,15 +118,13 @@ const MovieCard = ({
           </span>
         </div>
 
-        {/* Description - Optional, if available in item */}
-        {item.description && (
-          <p className="text-sm text-gray-600 dark:text-gray-300 line-clamp-2 mb-4 flex-grow">
-            {item.description}
-          </p>
-        )}
+        {/* Description - Always render to maintain height consistency */}
+        <p className="text-sm text-gray-600 dark:text-gray-300 line-clamp-2 mb-4 flex-grow min-h-[2.5rem]">
+          {item.description || ""}
+        </p>
       </div>
     </Link>
   );
-};
+});
 
 export default MovieCard;

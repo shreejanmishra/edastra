@@ -13,7 +13,7 @@ import {
   Award,
   Glasses,
 } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useTheme } from "../context/ThemeContext";
 import brandIcon from "../assets/brandIcon.png";
 
@@ -23,13 +23,20 @@ const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
 
-  // Add scroll listener
-  useState(() => {
+  // Add scroll listener with debouncing for performance
+  useEffect(() => {
+    let timeoutId;
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 0);
+      if (timeoutId) clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        setIsScrolled(window.scrollY > 0);
+      }, 10);
     };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (timeoutId) clearTimeout(timeoutId);
+    };
   }, []);
 
   return (

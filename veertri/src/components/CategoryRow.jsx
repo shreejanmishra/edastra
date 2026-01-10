@@ -1,9 +1,9 @@
-import { useRef } from "react";
+import { useRef, useCallback, memo } from "react";
 import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import MovieCard from "./MovieCard";
 import { Link } from "react-router-dom";
 
-const CategoryRow = ({
+const CategoryRow = memo(({
   title,
   items,
   isLarge = false,
@@ -13,7 +13,7 @@ const CategoryRow = ({
 }) => {
   const rowRef = useRef(null);
 
-  const scroll = (direction) => {
+  const scroll = useCallback((direction) => {
     if (rowRef.current) {
       const scrollAmount =
         direction === "left"
@@ -21,7 +21,7 @@ const CategoryRow = ({
           : rowRef.current.clientWidth;
       rowRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
     }
-  };
+  }, []);
 
   return (
     <div className="px-4 md:px-16 mb-12">
@@ -84,6 +84,6 @@ const CategoryRow = ({
       </div>
     </div>
   );
-};
+});
 
 export default CategoryRow;
