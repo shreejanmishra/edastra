@@ -17,8 +17,14 @@ app.use(cors());
 app.use(express.json());
 
 // MongoDB Connection
-// MongoDB Connection
 const MONGO_URI = process.env.MONGO_URI || "mongodb://localhost:27017/veertri";
+
+// Debug: Check if MONGO_URI is set from environment
+console.log("MONGO_URI configured:", MONGO_URI ? "Yes" : "No");
+console.log(
+  "MONGO_URI starts with mongodb:",
+  MONGO_URI?.startsWith("mongodb") ? "Yes" : "No"
+);
 
 let cachedDb = null;
 
@@ -65,6 +71,19 @@ app.use(async (req, res, next) => {
       hint: "Check MONGO_URI environment variable",
     });
   }
+});
+
+// Health check endpoint to verify deployment
+app.get("/api/health", (req, res) => {
+  res.json({
+    status: "ok",
+    mongoURISet: !!process.env.MONGO_URI,
+    mongoURIPreview: process.env.MONGO_URI
+      ? process.env.MONGO_URI.substring(0, 30) + "..."
+      : "NOT SET - using localhost fallback",
+    nodeEnv: process.env.NODE_ENV || "not set",
+    timestamp: new Date().toISOString(),
+  });
 });
 
 // Schema
@@ -359,5 +378,15 @@ if (process.env.NODE_ENV !== "production") {
     console.log(`Server running on port ${PORT}`);
   });
 }
+
+// Global error handler - catches any uncaught errors
+app.use((err, req, res, next) => {
+  console.error("Global error handler caught:", err);
+  res.status(500).json({
+    message: "Internal server error",
+    error: err.message,
+    stack: process.env.NODE_ENV !== "production" ? err.stack : undefined,
+  });
+});
 
 export default app;
