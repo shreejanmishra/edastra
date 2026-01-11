@@ -14,7 +14,20 @@ const HomePage = () => {
   const [featuredContent, setFeaturedContent] = useState(null);
 
   useEffect(() => {
-    setFeaturedContent(getFeaturedContent());
+    setFeaturedContent({
+      id: "fixed-hero-video",
+      title: "Archie and the Magical Garden", // Updated title from user
+      description:
+        "Experience the future of education with our interactive learning platform.",
+      thumbnail: bgImage, // Fallback to the imported background
+      backdrop:
+        "https://images.unsplash.com/photo-1517457373958-b7bdd458720e?w=1920&h=1080&fit=crop", // Generic educational background
+      genre: "Education",
+      year: 2025,
+      duration: "Promo",
+      rating: "5.0",
+      videoUrl: "https://www.youtube.com/watch?v=1rV9uoSKBSI", // Updated to YouTube link
+    });
   }, []);
 
   // Define Home Page Categories
