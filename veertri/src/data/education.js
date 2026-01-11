@@ -1,4 +1,21 @@
 export const educationalVideos = [
+  // Fixed hero video for home page
+  {
+    id: "fixed-hero-video",
+    title: "Archie and the Magical Garden",
+    thumbnail: "https://img.youtube.com/vi/1rV9uoSKBSI/hqdefault.jpg",
+    backdrop: "https://img.youtube.com/vi/1rV9uoSKBSI/maxresdefault.jpg",
+    genre: "Education",
+    year: 2025,
+    duration: "Promo",
+    rating: "5.0",
+    description:
+      "Experience the future of education with our interactive learning platform.",
+    instructor: "VeerTri Team",
+    featured: true,
+    videoUrl: "https://www.youtube.com/watch?v=1rV9uoSKBSI",
+    classLevel: 8,
+  },
   // {
   //   id: 1,
   //   title: "Fun with Basic Counting",
