@@ -1,0 +1,131 @@
+import { useEffect } from "react";
+
+/**
+ * SEO Component - Updates document head for better SEO
+ * Works with React 19 without external dependencies
+ *
+ * @param {Object} props
+ * @param {string} props.title - Page title
+ * @param {string} props.description - Meta description
+ * @param {string} props.keywords - Meta keywords (comma separated)
+ * @param {string} props.canonicalUrl - Canonical URL for the page
+ * @param {string} props.ogImage - Open Graph image URL
+ * @param {string} props.ogType - Open Graph type (default: website)
+ * @param {Object} props.structuredData - JSON-LD structured data object
+ */
+const SEO = ({
+  title = "Veertri - Interactive Educational Entertainment Platform",
+  description = "Experience the future of education with Veertri. Interactive learning platform combining entertainment and education for students of all ages.",
+  keywords = "education, edutainment, learning, online courses",
+  canonicalUrl,
+  ogImage = "/og-image.jpg",
+  ogType = "website",
+  structuredData = null,
+}) => {
+  useEffect(() => {
+    // Update document title
+    document.title = title;
+
+    // Helper to update or create meta tags
+    const updateMetaTag = (selector, attribute, content) => {
+      let element = document.querySelector(selector);
+      if (!element) {
+        element = document.createElement("meta");
+        const [attr, value] = Object.entries(
+          selector.includes("property=")
+            ? { property: selector.match(/property="([^"]+)"/)[1] }
+            : { name: selector.match(/name="([^"]+)"/)[1] }
+        )[0];
+        element.setAttribute(attr, value);
+        document.head.appendChild(element);
+      }
+      element.setAttribute(attribute, content);
+    };
+
+    // Update meta description
+    updateMetaTag('meta[name="description"]', "content", description);
+
+    // Update meta keywords
+    if (keywords) {
+      updateMetaTag('meta[name="keywords"]', "content", keywords);
+    }
+
+    // Update Open Graph tags
+    updateMetaTag('meta[property="og:title"]', "content", title);
+    updateMetaTag('meta[property="og:description"]', "content", description);
+    updateMetaTag('meta[property="og:type"]', "content", ogType);
+    if (ogImage) {
+      updateMetaTag('meta[property="og:image"]', "content", ogImage);
+    }
+
+    // Update Twitter tags
+    updateMetaTag('meta[property="twitter:title"]', "content", title);
+    updateMetaTag(
+      'meta[property="twitter:description"]',
+      "content",
+      description
+    );
+    if (ogImage) {
+      updateMetaTag('meta[property="twitter:image"]', "content", ogImage);
+    }
+
+    // Update canonical URL
+    if (canonicalUrl) {
+      let canonical = document.querySelector('link[rel="canonical"]');
+      if (!canonical) {
+        canonical = document.createElement("link");
+        canonical.setAttribute("rel", "canonical");
+        document.head.appendChild(canonical);
+      }
+      canonical.setAttribute("href", canonicalUrl);
+    }
+
+    // Add JSON-LD structured data
+    const jsonLdId = "seo-json-ld";
+    let jsonLdScript = document.getElementById(jsonLdId);
+
+    // Default Organization schema
+    const defaultSchema = {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      name: "Veertri",
+      url: "https://veertri.com",
+      logo: "https://veertri.com/logo.png",
+      description:
+        "Interactive educational entertainment platform for students",
+      sameAs: [],
+    };
+
+    const schemaToUse = structuredData || defaultSchema;
+
+    if (!jsonLdScript) {
+      jsonLdScript = document.createElement("script");
+      jsonLdScript.id = jsonLdId;
+      jsonLdScript.type = "application/ld+json";
+      document.head.appendChild(jsonLdScript);
+    }
+    jsonLdScript.textContent = JSON.stringify(schemaToUse);
+
+    // Cleanup function
+    return () => {
+      // Remove JSON-LD on unmount to prevent stale data
+      const existingScript = document.getElementById(jsonLdId);
+      if (existingScript) {
+        existingScript.remove();
+      }
+    };
+  }, [
+    title,
+    description,
+    keywords,
+    canonicalUrl,
+    ogImage,
+    ogType,
+    structuredData,
+  ]);
+
+  // This component doesn't render anything
+  return null;
+};
+
+export default SEO;

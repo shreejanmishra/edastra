@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import SEO from "../components/SEO";
 import {
   Trash2,
   Play,
@@ -103,6 +104,7 @@ const MyCornerRow = ({ title, items, onRemove, isSubscription = false }) => {
                   <img
                     src={item.thumbnail}
                     alt={item.title}
+                    loading="lazy"
                     className="w-full h-full object-cover transition-transform duration-500 group-hover/card:scale-110"
                   />
                   <div className="absolute top-3 right-3 bg-[#090D0E] backdrop-blur-sm px-3 py-1 rounded-full text-xs font-semibold text-[#FAD502] shadow-sm">
@@ -171,6 +173,12 @@ const MyCorner = () => {
       style={{ backgroundImage: `url(${myCorner})` }}
     >
       <div className="min-h-screen dark:bg-black/50 dark:backdrop-blur-sm transition-colors duration-300 pt-24 pb-20">
+        <SEO
+          title="My Corner - Veertri | Your Personal Learning Dashboard"
+          description="Access your saved content, subscriptions, and continue learning from where you left off. Your personalized Veertri dashboard."
+          keywords="my list, saved videos, learning dashboard, subscriptions, continue watching"
+          canonicalUrl="https://veertri.com/my-corner"
+        />
         {/* My List Section */}
         <MyCornerRow title="My List" items={myList} onRemove={removeFromList} />
 

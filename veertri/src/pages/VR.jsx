@@ -1,14 +1,22 @@
 import vrIcon2 from "../assets/vrIcon2.png";
+import SEO from "../components/SEO";
 import { ShoppingCart, UserPlus } from "lucide-react";
 
 const VR = () => {
   return (
     <div className="relative min-h-screen dark:bg-black bg-gray-50 dark:text-white text-gray-900 flex flex-col items-center justify-center transition-colors duration-300 overflow-hidden pt-20 pb-10">
+      <SEO
+        title="VR Experience - Veertri | Immersive Learning"
+        description="Experience the future of education with Veertri VR. Immersive virtual reality learning coming soon. Subscribe for early access."
+        keywords="VR education, virtual reality learning, immersive education, VR headset, educational VR"
+        canonicalUrl="https://veertri.com/vr"
+      />
       <div className="relative z-10 flex flex-col items-center justify-center group mb-12">
         <div className="relative">
           <img
             src={vrIcon2}
             alt="VR Experience"
+            loading="lazy"
             className="relative w-64 h-64 md:w-96 md:h-96 object-contain transition-all duration-500 transform group-hover:scale-110 group-hover filter drop-shadow-2xl"
           />
         </div>

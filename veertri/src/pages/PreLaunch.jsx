@@ -1,4 +1,5 @@
 import { useState } from "react";
+import SEO from "../components/SEO";
 import bgImage from "../assets/bgImage2.jpg";
 
 const PreLaunch = () => {
@@ -74,6 +75,12 @@ const PreLaunch = () => {
       className="min-h-screen transition-colors duration-300 bg-cover bg-center bg-no-repeat bg-fixed flex items-center justify-center"
       style={{ backgroundImage: `url(${bgImage})` }}
     >
+      <SEO
+        title="Join Veertri Beta - Free Premium Access for Early Users"
+        description="Be among the first 1000 users to experience Veertri's edutainment platform. Sign up now for 1 month of free premium access on release."
+        keywords="beta testing, early access, free premium, education app, edutainment"
+        canonicalUrl="https://veertri.com/pre-launch"
+      />
       <div className="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
 
       <div className="relative z-10 w-full max-w-md px-4">

@@ -1,5 +1,6 @@
 import { useParams, Link } from "react-router-dom";
-import { useState, useEffect, Suspense, lazy } from "react";
+import { useState, useEffect, Suspense, lazy, useMemo } from "react";
+import SEO from "../components/SEO";
 import {
   Play,
   Plus,
@@ -33,12 +34,12 @@ const VideoDetail = () => {
 
       // Check completion status
       const completedExercises = JSON.parse(
-        localStorage.getItem("completedExercises") || "[]"
+        localStorage.getItem("completedExercises") || "[]",
       );
       setIsExerciseCompleted(completedExercises.includes(item.id));
 
       const completedTests = JSON.parse(
-        localStorage.getItem("completedTests") || "[]"
+        localStorage.getItem("completedTests") || "[]",
       );
       setIsTestCompleted(completedTests.includes(item.id));
     }
@@ -56,7 +57,7 @@ const VideoDetail = () => {
   const toggleExercise = () => {
     if (!content) return;
     const completedExercises = JSON.parse(
-      localStorage.getItem("completedExercises") || "[]"
+      localStorage.getItem("completedExercises") || "[]",
     );
     let newCompleted;
     if (isExerciseCompleted) {
@@ -71,7 +72,7 @@ const VideoDetail = () => {
   const toggleTest = () => {
     if (!content) return;
     const completedTests = JSON.parse(
-      localStorage.getItem("completedTests") || "[]"
+      localStorage.getItem("completedTests") || "[]",
     );
     let newCompleted;
     if (isTestCompleted) {
@@ -83,6 +84,30 @@ const VideoDetail = () => {
     setIsTestCompleted(!isTestCompleted);
   };
 
+  // Generate VideoObject structured data for SEO (must be before conditional return)
+  const videoStructuredData = useMemo(() => {
+    if (!content) return null;
+    return {
+      "@context": "https://schema.org",
+      "@type": "VideoObject",
+      name: content.title,
+      description: content.description,
+      thumbnailUrl: content.thumbnail || content.backdrop,
+      uploadDate: `${content.year}-01-01`,
+      duration: content.duration || "PT30M",
+      contentUrl: content.videoUrl,
+      embedUrl: content.videoUrl,
+      publisher: {
+        "@type": "Organization",
+        name: "Veertri",
+        logo: {
+          "@type": "ImageObject",
+          url: "https://veertri.com/logo.png",
+        },
+      },
+    };
+  }, [content]);
+
   if (!content) {
     return (
       <div className="bg-black min-h-screen flex items-center justify-center">
@@ -93,6 +118,17 @@ const VideoDetail = () => {
 
   return (
     <div className="bg-black min-h-screen">
+      {content && (
+        <SEO
+          title={`${content.title} - Watch on Veertri`}
+          description={content.description}
+          keywords={`${content.genre}, ${content.title}, educational video, veertri`}
+          canonicalUrl={`https://veertri.com/watch/${id}`}
+          ogImage={content.backdrop || content.thumbnail}
+          ogType="video.other"
+          structuredData={videoStructuredData}
+        />
+      )}
       {/* Video Player or Hero Image */}
       <div className="relative">
         {isPlaying ? (
@@ -114,6 +150,7 @@ const VideoDetail = () => {
             <img
               src={content.backdrop}
               alt={content.title}
+              loading="lazy"
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
@@ -237,6 +274,7 @@ const VideoDetail = () => {
                   <img
                     src={item.thumbnail}
                     alt={item.title}
+                    loading="lazy"
                     className="w-full h-auto object-cover group-hover:scale-110 transition-transform duration-300"
                   />
                 </div>

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { scholarships } from "../data/scholarships";
+import SEO from "../components/SEO";
 
 import scholarshipBg from "../assets/scholarshipBG.jpg";
 import entertainmentBg from "../assets/entertainment.jpg";
@@ -16,17 +17,10 @@ import {
   X,
   Upload,
   Download,
-
 } from "lucide-react";
 import { EligibilityModal } from "../components/EligibilityModal";
 import { BankDetailsModal } from "../components/BankDetailsModal";
 import { ConfirmationModal } from "../components/ConfirmationModal";
-
-
-
-
-
-
 
 export default function Scholarship() {
   const navigate = useNavigate();
@@ -61,20 +55,20 @@ export default function Scholarship() {
           return { ...app, bankDetailsSubmitted: true };
         }
         return app;
-      })
+      }),
     );
 
     // Persist to localStorage for POC
     localStorage.setItem(
       `scholarship_bank_submitted_${selectedAppForBank.id}`,
-      "true"
+      "true",
     );
 
     // Simulate Disbursement after 3 seconds for POC
     setTimeout(() => {
       localStorage.setItem(
         `scholarship_disbursed_${selectedAppForBank.id}`,
-        "true"
+        "true",
       );
       setApplications((prevApps) =>
         prevApps.map((app) => {
@@ -82,7 +76,7 @@ export default function Scholarship() {
             return { ...app, disbursed: true };
           }
           return app;
-        })
+        }),
       );
     }, 3000);
   };
@@ -116,13 +110,13 @@ export default function Scholarship() {
     setApplications((prevApps) =>
       prevApps.map((app) => {
         const examStatus = localStorage.getItem(
-          `scholarship_exam_status_${app.id}`
+          `scholarship_exam_status_${app.id}`,
         );
         const bankSubmitted = localStorage.getItem(
-          `scholarship_bank_submitted_${app.id}`
+          `scholarship_bank_submitted_${app.id}`,
         );
         const disbursed = localStorage.getItem(
-          `scholarship_disbursed_${app.id}`
+          `scholarship_disbursed_${app.id}`,
         );
 
         let updatedApp = { ...app };
@@ -136,7 +130,7 @@ export default function Scholarship() {
           updatedApp.disbursed = true;
         }
         return updatedApp;
-      })
+      }),
     );
   }, []);
 
@@ -196,6 +190,12 @@ Thank you for using Veertri.
       style={{ backgroundImage: `url(${entertainmentBg})` }}
     >
       <div className="min-h-screen dark:bg-black/50 dark:backdrop-blur-sm transition-colors duration-300 pt-24 px-4 md:px-16 pb-12">
+        <SEO
+          title="Scholarships - Veertri | Education Funding Opportunities"
+          description="Find scholarships for students in India. Government schemes, private funding, and merit-based scholarships for school and college students."
+          keywords="scholarships India, education funding, student scholarships, PM scholarship, merit scholarship"
+          canonicalUrl="https://veertri.com/scholarship"
+        />
         <div
           className="relative rounded-2xl overflow-hidden mb-12 text-left py-16 px-8 md:px-12"
           style={{
@@ -234,6 +234,7 @@ Thank you for using Veertri.
                     <img
                       src={app.image}
                       alt={app.title}
+                      loading="lazy"
                       className="w-24 h-24 rounded-lg object-cover"
                     />
                     <div className="flex-1">
@@ -247,7 +248,7 @@ Thank you for using Veertri.
                       <div className="flex items-center justify-between mt-2">
                         <div
                           className={`flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium border ${getStatusColor(
-                            app.status
+                            app.status,
                           )}`}
                         >
                           {getStatusIcon(app.status)}
@@ -354,6 +355,7 @@ Thank you for using Veertri.
                     <img
                       src={scholarship.image}
                       alt={scholarship.title}
+                      loading="lazy"
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                     <div className="absolute top-4 right-4 bg-[#090D0E] backdrop-blur-sm px-3 py-1 rounded-full text-sm font-semibold text-[#FAD502] shadow-sm">
