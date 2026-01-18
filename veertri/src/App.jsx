@@ -8,6 +8,7 @@ import {
 import { Suspense, lazy } from "react";
 import "./App.css";
 import Header from "./components/Header";
+import ErrorBoundary from "./components/ErrorBoundary";
 import { AuthProvider, useAuth } from "./context/AuthContext";
 
 // Lazy load pages
@@ -54,79 +55,81 @@ const ProtectedRoute = ({ children }) => {
 function App() {
   return (
     <AuthProvider>
-      <Router>
-        <div className="min-h-screen bg-black">
-          <Routes>
-            <Route
-              path="/login"
-              element={
-                <Suspense fallback={<LoadingFallback />}>
-                  <Login />
-                </Suspense>
-              }
-            />
-            <Route
-              path="/pre-launch"
-              element={
-                <Suspense fallback={<LoadingFallback />}>
-                  <PreLaunch />
-                </Suspense>
-              }
-            />
-            <Route
-              path="/roi"
-              element={
-                <Suspense fallback={<LoadingFallback />}>
-                  <ROIPage />
-                </Suspense>
-              }
-            />
-            <Route
-              path="*"
-              element={
-                <ProtectedRoute>
-                  <Header />
+      <ErrorBoundary>
+        <Router>
+          <div className="min-h-screen bg-black">
+            <Routes>
+              <Route
+                path="/login"
+                element={
                   <Suspense fallback={<LoadingFallback />}>
-                    <Routes>
-                      <Route path="/" element={<HomePage />} />
-                      <Route
-                        path="/home/:categoryId"
-                        element={<HomeCategory />}
-                      />
-                      <Route
-                        path="/entertainment"
-                        element={<Entertainment />}
-                      />
-                      <Route
-                        path="/entertainment/:categoryId"
-                        element={<EntertainmentCategory />}
-                      />
-                      <Route path="/subjects" element={<Subjects />} />
-                      <Route
-                        path="/subjects/:subject"
-                        element={<SubjectPage />}
-                      />
-                      <Route
-                        path="/subjects/:subject/class/:classId"
-                        element={<ClassCurriculum />}
-                      />
-                      <Route path="/vr" element={<VR />} />
-                      <Route path="/scholarship" element={<Scholarship />} />
-                      <Route
-                        path="/scholarship/exam/:id"
-                        element={<ScholarshipExam />}
-                      />
-                      <Route path="/watch/:id" element={<VideoDetail />} />
-                      <Route path="/my-corner" element={<MyCorner />} />
-                      <Route path="/profile" element={<Profile />} />
-                    </Routes>
+                    <Login />
                   </Suspense>
-                </ProtectedRoute>
-              }
-            />
-          </Routes>
-        </div>
-      </Router>
+                }
+              />
+              <Route
+                path="/pre-launch"
+                element={
+                  <Suspense fallback={<LoadingFallback />}>
+                    <PreLaunch />
+                  </Suspense>
+                }
+              />
+              <Route
+                path="/roi"
+                element={
+                  <Suspense fallback={<LoadingFallback />}>
+                    <ROIPage />
+                  </Suspense>
+                }
+              />
+              <Route
+                path="*"
+                element={
+                  <ProtectedRoute>
+                    <Header />
+                    <Suspense fallback={<LoadingFallback />}>
+                      <Routes>
+                        <Route path="/" element={<HomePage />} />
+                        <Route
+                          path="/home/:categoryId"
+                          element={<HomeCategory />}
+                        />
+                        <Route
+                          path="/entertainment"
+                          element={<Entertainment />}
+                        />
+                        <Route
+                          path="/entertainment/:categoryId"
+                          element={<EntertainmentCategory />}
+                        />
+                        <Route path="/subjects" element={<Subjects />} />
+                        <Route
+                          path="/subjects/:subject"
+                          element={<SubjectPage />}
+                        />
+                        <Route
+                          path="/subjects/:subject/class/:classId"
+                          element={<ClassCurriculum />}
+                        />
+                        <Route path="/vr" element={<VR />} />
+                        <Route path="/scholarship" element={<Scholarship />} />
+                        <Route
+                          path="/scholarship/exam/:id"
+                          element={<ScholarshipExam />}
+                        />
+                        <Route path="/watch/:id" element={<VideoDetail />} />
+                        <Route path="/my-corner" element={<MyCorner />} />
+                        <Route path="/profile" element={<Profile />} />
+                      </Routes>
+                    </Suspense>
+                  </ProtectedRoute>
+                }
+              />
+            </Routes>
+          </div>
+        </Router>
+      </ErrorBoundary>
     </AuthProvider>
   );
 }
