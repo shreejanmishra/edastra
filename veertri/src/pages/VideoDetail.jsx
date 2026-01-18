@@ -84,15 +84,7 @@ const VideoDetail = () => {
     setIsTestCompleted(!isTestCompleted);
   };
 
-  if (!content) {
-    return (
-      <div className="bg-black min-h-screen flex items-center justify-center">
-        <p className="text-white text-xl">Loading...</p>
-      </div>
-    );
-  }
-
-  // Generate VideoObject structured data for SEO
+  // Generate VideoObject structured data for SEO (must be before conditional return)
   const videoStructuredData = useMemo(() => {
     if (!content) return null;
     return {
@@ -115,6 +107,14 @@ const VideoDetail = () => {
       },
     };
   }, [content]);
+
+  if (!content) {
+    return (
+      <div className="bg-black min-h-screen flex items-center justify-center">
+        <p className="text-white text-xl">Loading...</p>
+      </div>
+    );
+  }
 
   return (
     <div className="bg-black min-h-screen">

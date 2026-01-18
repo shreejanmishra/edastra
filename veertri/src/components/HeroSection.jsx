@@ -1,12 +1,22 @@
 import { Play, Info, Volume2, VolumeX } from "lucide-react";
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { Link } from "react-router-dom";
 
 const HeroSection = ({ content, isCompact = false }) => {
   const [isMuted, setIsMuted] = useState(true);
   const [videoLoaded, setVideoLoaded] = useState(false);
-  // YouTube facade: don't load iframe until user clicks
-  const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
+  // Video preview plays on hover
+  const [isHovering, setIsHovering] = useState(false);
+
+  // Hover handlers for video preview
+  const handleMouseEnter = useCallback(() => {
+    setIsHovering(true);
+  }, []);
+
+  const handleMouseLeave = useCallback(() => {
+    setIsHovering(false);
+    setVideoLoaded(false);
+  }, []);
 
   if (!content) return null;
 
@@ -49,15 +59,13 @@ const HeroSection = ({ content, isCompact = false }) => {
     ? getYoutubeThumbnail(content.videoUrl)
     : null;
 
-  const handlePlayClick = () => {
-    setShouldLoadVideo(true);
-  };
-
   return (
     <div
       className={`relative w-full ${
         isCompact ? "h-[50vh] md:h-[60vh]" : "h-[80vh] md:h-screen"
       }`}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
       {/* Background Image/Video */}
       <div className="absolute inset-0 overflow-hidden">
@@ -67,12 +75,12 @@ const HeroSection = ({ content, isCompact = false }) => {
           alt={content.title}
           loading="lazy"
           className={`w-full h-full object-cover transition-opacity duration-700 ${
-            videoLoaded && shouldLoadVideo ? "opacity-0" : "opacity-100"
+            videoLoaded && isHovering ? "opacity-0" : "opacity-100"
           }`}
         />
 
-        {/* YouTube Facade: Only load iframe after user interaction */}
-        {content.videoUrl && shouldLoadVideo && (
+        {/* Video preview loads on hover */}
+        {content.videoUrl && isHovering && (
           <div
             className={`absolute inset-0 transition-opacity duration-1000 ${
               videoLoaded ? "opacity-100" : "opacity-0"
@@ -102,19 +110,6 @@ const HeroSection = ({ content, isCompact = false }) => {
               />
             )}
           </div>
-        )}
-
-        {/* Play button overlay for YouTube facade (before video loads) */}
-        {isYoutube && !shouldLoadVideo && (
-          <button
-            onClick={handlePlayClick}
-            className="absolute inset-0 flex items-center justify-center z-10 group cursor-pointer"
-            aria-label="Play video"
-          >
-            <div className="bg-[#FAD502] text-black p-4 md:p-6 rounded-full shadow-2xl transform transition-all duration-300 group-hover:scale-110 group-hover:bg-[#e5c302]">
-              <Play size={32} className="md:w-12 md:h-12" fill="currentColor" />
-            </div>
-          </button>
         )}
 
         {/* Gradient overlays */}
@@ -174,8 +169,8 @@ const HeroSection = ({ content, isCompact = false }) => {
         </div>
       </div>
 
-      {/* Mute button - only show when video is loaded */}
-      {shouldLoadVideo && (
+      {/* Mute button - only show when video is playing */}
+      {isHovering && videoLoaded && (
         <button
           onClick={() => setIsMuted(!isMuted)}
           className="absolute bottom-24 md:bottom-32 right-4 md:right-8 bg-transparent border border-white/50 hover:bg-white/10 text-white rounded-full p-2 md:p-3 transition z-20"
