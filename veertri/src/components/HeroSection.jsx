@@ -1,10 +1,12 @@
 import { Play, Info, Volume2, VolumeX } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const HeroSection = ({ content, isCompact = false }) => {
   const [isMuted, setIsMuted] = useState(true);
   const [videoLoaded, setVideoLoaded] = useState(false);
+  // YouTube facade: don't load iframe until user clicks
+  const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
 
   if (!content) return null;
 
@@ -22,12 +24,34 @@ const HeroSection = ({ content, isCompact = false }) => {
     return null;
   };
 
+  const getYoutubeThumbnail = (url) => {
+    if (!url) return null;
+    let videoId = null;
+    if (url.includes("youtube.com/watch")) {
+      videoId = url.split("v=")[1]?.split("&")[0];
+    } else if (url.includes("youtu.be/")) {
+      videoId = url.split("youtu.be/")[1]?.split("?")[0];
+    } else if (url.includes("youtube.com/embed")) {
+      videoId = url.split("/embed/")[1]?.split("?")[0];
+    }
+    return videoId
+      ? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`
+      : null;
+  };
+
   const isYoutube =
     content.videoUrl &&
     (content.videoUrl.includes("youtube.com") ||
       content.videoUrl.includes("youtu.be"));
   const embedUrl = isYoutube ? getEmbedUrl(content.videoUrl) : null;
-  const videoId = isYoutube ? embedUrl.split("/").pop() : null;
+  const videoId = isYoutube ? embedUrl?.split("/").pop()?.split("?")[0] : null;
+  const youtubeThumbnail = isYoutube
+    ? getYoutubeThumbnail(content.videoUrl)
+    : null;
+
+  const handlePlayClick = () => {
+    setShouldLoadVideo(true);
+  };
 
   return (
     <div
@@ -37,15 +61,18 @@ const HeroSection = ({ content, isCompact = false }) => {
     >
       {/* Background Image/Video */}
       <div className="absolute inset-0 overflow-hidden">
+        {/* Show YouTube thumbnail or backdrop as placeholder */}
         <img
-          src={content.backdrop}
+          src={youtubeThumbnail || content.backdrop}
           alt={content.title}
+          loading="lazy"
           className={`w-full h-full object-cover transition-opacity duration-700 ${
-            videoLoaded ? "opacity-0" : "opacity-100"
+            videoLoaded && shouldLoadVideo ? "opacity-0" : "opacity-100"
           }`}
         />
 
-        {content.videoUrl && (
+        {/* YouTube Facade: Only load iframe after user interaction */}
+        {content.videoUrl && shouldLoadVideo && (
           <div
             className={`absolute inset-0 transition-opacity duration-1000 ${
               videoLoaded ? "opacity-100" : "opacity-0"
@@ -75,6 +102,19 @@ const HeroSection = ({ content, isCompact = false }) => {
               />
             )}
           </div>
+        )}
+
+        {/* Play button overlay for YouTube facade (before video loads) */}
+        {isYoutube && !shouldLoadVideo && (
+          <button
+            onClick={handlePlayClick}
+            className="absolute inset-0 flex items-center justify-center z-10 group cursor-pointer"
+            aria-label="Play video"
+          >
+            <div className="bg-[#FAD502] text-black p-4 md:p-6 rounded-full shadow-2xl transform transition-all duration-300 group-hover:scale-110 group-hover:bg-[#e5c302]">
+              <Play size={32} className="md:w-12 md:h-12" fill="currentColor" />
+            </div>
+          </button>
         )}
 
         {/* Gradient overlays */}
@@ -134,17 +174,19 @@ const HeroSection = ({ content, isCompact = false }) => {
         </div>
       </div>
 
-      {/* Mute button */}
-      <button
-        onClick={() => setIsMuted(!isMuted)}
-        className="absolute bottom-24 md:bottom-32 right-4 md:right-8 bg-transparent border border-white/50 hover:bg-white/10 text-white rounded-full p-2 md:p-3 transition z-20"
-      >
-        {isMuted ? (
-          <VolumeX size={20} className="md:w-6 md:h-6" />
-        ) : (
-          <Volume2 size={20} className="md:w-6 md:h-6" />
-        )}
-      </button>
+      {/* Mute button - only show when video is loaded */}
+      {shouldLoadVideo && (
+        <button
+          onClick={() => setIsMuted(!isMuted)}
+          className="absolute bottom-24 md:bottom-32 right-4 md:right-8 bg-transparent border border-white/50 hover:bg-white/10 text-white rounded-full p-2 md:p-3 transition z-20"
+        >
+          {isMuted ? (
+            <VolumeX size={20} className="md:w-6 md:h-6" />
+          ) : (
+            <Volume2 size={20} className="md:w-6 md:h-6" />
+          )}
+        </button>
+      )}
     </div>
   );
 };

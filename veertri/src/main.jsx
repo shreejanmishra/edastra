@@ -2,11 +2,14 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App.jsx";
 import { ThemeProvider } from "./context/ThemeContext";
+import { CompletedVideosProvider } from "./context/CompletedVideosContext";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <ThemeProvider>
-      <App />
+      <CompletedVideosProvider>
+        <App />
+      </CompletedVideosProvider>
     </ThemeProvider>
   </StrictMode>
 );
