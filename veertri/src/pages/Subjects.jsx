@@ -287,7 +287,7 @@ const SubjectContentRow = ({ title, selectedClass, selectedBoard }) => {
       <div className="dark:bg-gray-900/40 bg-white/10 backdrop-blur-sm border dark:border-gray-800 border-gray-200 rounded-2xl p-4 md:p-6 shadow-xl relative group transition-all duration-300 hover:shadow-2xl hover:border-gray-300 dark:hover:border-gray-700">
         {/* Header */}
         <div
-          className="mb-4 px-1 flex items-center justify-between cursor-pointer"
+          className="mb-4 px-1 flex flex-col md:flex-row md:items-center justify-between cursor-pointer gap-3"
           onClick={() => setIsExpanded(!isExpanded)}
         >
           <Link
@@ -305,8 +305,8 @@ const SubjectContentRow = ({ title, selectedClass, selectedBoard }) => {
           </Link>
 
           <div className="flex items-center gap-6">
-            {/* Progress Donuts */}
-            <div className="flex items-center gap-4">
+            {/* Progress Donuts - Hidden on mobile */}
+            <div className="hidden md:flex items-center gap-4">
               <ProgressDonut
                 completed={stats.videos.completed}
                 total={stats.videos.total}
@@ -364,7 +364,7 @@ const SubjectContentRow = ({ title, selectedClass, selectedBoard }) => {
             {/* Cards Container */}
             <div
               ref={rowRef}
-              className="flex gap-4 overflow-x-scroll scrollbar-hide scroll-smooth py-4 px-1 "
+              className="flex gap-4 overflow-x-scroll scrollbar-hide scroll-smooth py-4 px-1 snap-x snap-mandatory"
               style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
             >
               {items.map((item, index) => (

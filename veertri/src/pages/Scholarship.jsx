@@ -225,29 +225,29 @@ Thank you for using Veertri.
             </h2>
 
             {applications.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 {applications.map((app) => (
                   <div
                     key={app.id}
-                    className="dark:bg-gray-900/80 bg-white/90 backdrop-blur-sm rounded-xl p-4 shadow-md border dark:border-gray-800 border-gray-100 flex gap-4 items-center"
+                    className="dark:bg-gray-900/80 bg-white/90 backdrop-blur-sm rounded-xl p-4 md:p-5 shadow-md border dark:border-gray-800 border-gray-100 flex flex-col sm:flex-row gap-4 items-start sm:items-center"
                   >
                     <img
                       src={app.image}
                       alt={app.title}
                       loading="lazy"
-                      className="w-24 h-24 rounded-lg object-cover"
+                      className="w-20 h-20 sm:w-24 sm:h-24 rounded-lg object-cover flex-shrink-0"
                     />
-                    <div className="flex-1">
-                      <h3 className="font-bold dark:text-white text-gray-900 line-clamp-1">
+                    <div className="flex-1 min-w-0">
+                      <h3 className="font-bold dark:text-white text-gray-900 line-clamp-1 text-sm sm:text-base">
                         {app.title}
                       </h3>
-                      <p className="text-sm text-gray-500 mb-2">
+                      <p className="text-xs sm:text-sm text-gray-500 mb-2">
                         {app.provider}
                       </p>
 
-                      <div className="flex items-center justify-between mt-2">
+                      <div className="flex flex-col sm:flex-row sm:items-center gap-2 mt-2">
                         <div
-                          className={`flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium border ${getStatusColor(
+                          className={`flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium border w-fit ${getStatusColor(
                             app.status,
                           )}`}
                         >
