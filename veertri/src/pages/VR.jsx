@@ -16,6 +16,7 @@ const VR = () => {
           <img
             src={vrIcon2}
             alt="VR Experience"
+            loading="lazy"
             className="relative w-64 h-64 md:w-96 md:h-96 object-contain transition-all duration-500 transform group-hover:scale-110 group-hover filter drop-shadow-2xl"
           />
         </div>

@@ -221,13 +221,13 @@ const SubjectContentRow = ({ title, selectedClass, selectedBoard }) => {
       };
 
     const videoCount = currentItems.filter((item) =>
-      currentCompletedData.videos.includes(item.id)
+      currentCompletedData.videos.includes(item.id),
     ).length;
     const exerciseCount = currentItems.filter((item) =>
-      currentCompletedData.exercises.includes(item.id)
+      currentCompletedData.exercises.includes(item.id),
     ).length;
     const testCount = currentItems.filter((item) =>
-      currentCompletedData.tests.includes(item.id)
+      currentCompletedData.tests.includes(item.id),
     ).length;
 
     const total = currentItems.length;
@@ -256,7 +256,7 @@ const SubjectContentRow = ({ title, selectedClass, selectedBoard }) => {
     const filteredItems = getContentBySubjectAndClass(
       title,
       selectedClass,
-      selectedBoard
+      selectedBoard,
     );
     setItems(filteredItems);
     setStats(calculateStats(filteredItems, completedData));
@@ -501,6 +501,38 @@ const Subjects = () => {
           description="Explore educational content for classes Pre-school to 10th. CBSE, ICSE, IB curriculum with videos, exercises, and tests."
           keywords="CBSE syllabus, ICSE curriculum, online education, school subjects, class videos, educational content"
           canonicalUrl="https://veertri.com/subjects"
+          structuredData={{
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            name: "Educational Courses on Veertri",
+            description: "Browse educational content by subject and class",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Mathematics",
+                url: "https://veertri.com/subjects/mathematics",
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "Science",
+                url: "https://veertri.com/subjects/science",
+              },
+              {
+                "@type": "ListItem",
+                position: 3,
+                name: "English",
+                url: "https://veertri.com/subjects/english",
+              },
+              {
+                "@type": "ListItem",
+                position: 4,
+                name: "Social Studies",
+                url: "https://veertri.com/subjects/social-studies",
+              },
+            ],
+          }}
         />
         <div className="px-4 md:px-16 mb-8">
           <div className="rounded-3xl overflow-hidden shadow-2xl border border-white/20 dark:border-gray-800">

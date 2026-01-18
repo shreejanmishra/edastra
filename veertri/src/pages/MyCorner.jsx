@@ -104,6 +104,7 @@ const MyCornerRow = ({ title, items, onRemove, isSubscription = false }) => {
                   <img
                     src={item.thumbnail}
                     alt={item.title}
+                    loading="lazy"
                     className="w-full h-full object-cover transition-transform duration-500 group-hover/card:scale-110"
                   />
                   <div className="absolute top-3 right-3 bg-[#090D0E] backdrop-blur-sm px-3 py-1 rounded-full text-xs font-semibold text-[#FAD502] shadow-sm">

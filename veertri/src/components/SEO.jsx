@@ -11,6 +11,7 @@ import { useEffect } from "react";
  * @param {string} props.canonicalUrl - Canonical URL for the page
  * @param {string} props.ogImage - Open Graph image URL
  * @param {string} props.ogType - Open Graph type (default: website)
+ * @param {Object} props.structuredData - JSON-LD structured data object
  */
 const SEO = ({
   title = "Veertri - Interactive Educational Entertainment Platform",
@@ -19,6 +20,7 @@ const SEO = ({
   canonicalUrl,
   ogImage = "/og-image.jpg",
   ogType = "website",
+  structuredData = null,
 }) => {
   useEffect(() => {
     // Update document title
@@ -78,11 +80,49 @@ const SEO = ({
       canonical.setAttribute("href", canonicalUrl);
     }
 
-    // Cleanup function - optional, reset to defaults when unmounting
-    return () => {
-      // We don't reset on unmount as the next page will set its own values
+    // Add JSON-LD structured data
+    const jsonLdId = "seo-json-ld";
+    let jsonLdScript = document.getElementById(jsonLdId);
+
+    // Default Organization schema
+    const defaultSchema = {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      name: "Veertri",
+      url: "https://veertri.com",
+      logo: "https://veertri.com/logo.png",
+      description:
+        "Interactive educational entertainment platform for students",
+      sameAs: [],
     };
-  }, [title, description, keywords, canonicalUrl, ogImage, ogType]);
+
+    const schemaToUse = structuredData || defaultSchema;
+
+    if (!jsonLdScript) {
+      jsonLdScript = document.createElement("script");
+      jsonLdScript.id = jsonLdId;
+      jsonLdScript.type = "application/ld+json";
+      document.head.appendChild(jsonLdScript);
+    }
+    jsonLdScript.textContent = JSON.stringify(schemaToUse);
+
+    // Cleanup function
+    return () => {
+      // Remove JSON-LD on unmount to prevent stale data
+      const existingScript = document.getElementById(jsonLdId);
+      if (existingScript) {
+        existingScript.remove();
+      }
+    };
+  }, [
+    title,
+    description,
+    keywords,
+    canonicalUrl,
+    ogImage,
+    ogType,
+    structuredData,
+  ]);
 
   // This component doesn't render anything
   return null;

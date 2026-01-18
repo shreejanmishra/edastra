@@ -76,6 +76,19 @@ const HomePage = () => {
           description="Discover trending educational videos, courses, and interactive content. Experience the future of learning with Veertri."
           keywords="education, edutainment, trending courses, educational videos, online learning"
           canonicalUrl="https://veertri.com/"
+          structuredData={{
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            name: "Veertri",
+            url: "https://veertri.com",
+            description:
+              "Interactive educational entertainment platform for students",
+            potentialAction: {
+              "@type": "SearchAction",
+              target: "https://veertri.com/search?q={search_term_string}",
+              "query-input": "required name=search_term_string",
+            },
+          }}
         />
         {/* Hero Section */}
         <div className="px-4 md:px-16 mb-8">
