@@ -90,8 +90,8 @@ const HeroSection = ({ content, isCompact = false }) => {
               <iframe
                 src={`${embedUrl}?autoplay=1&mute=${
                   isMuted ? 1 : 0
-                }&controls=0&loop=1&playlist=${videoId}&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&enablejsapi=1`}
-                className="absolute top-1/2 left-1/2 w-[177.78vh] min-w-full min-h-full -translate-x-1/2 -translate-y-1/2"
+                }&controls=0&disablekb=1&fs=0&loop=1&playlist=${videoId}&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&enablejsapi=1`}
+                className="absolute top-1/2 left-1/2 w-[177.78vh] min-w-full min-h-full -translate-x-1/2 -translate-y-1/2 pointer-events-none scale-125"
                 style={{ border: "none" }}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 referrerPolicy="strict-origin-when-cross-origin"
