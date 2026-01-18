@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import HeroSection from "../components/HeroSection";
+import SEO from "../components/SEO";
 import {
   getFeaturedContent,
   educationalVideos,
@@ -70,6 +71,12 @@ const HomePage = () => {
       style={{ backgroundImage: `url(${bgImage})` }}
     >
       <div className="min-h-screen dark:bg-black/50 dark:backdrop-blur-sm transition-colors duration-300 pt-24 pb-20">
+        <SEO
+          title="Veertri - Home | Interactive Educational Entertainment"
+          description="Discover trending educational videos, courses, and interactive content. Experience the future of learning with Veertri."
+          keywords="education, edutainment, trending courses, educational videos, online learning"
+          canonicalUrl="https://veertri.com/"
+        />
         {/* Hero Section */}
         <div className="px-4 md:px-16 mb-8">
           <div className="rounded-3xl overflow-hidden shadow-2xl border border-white/20 dark:border-gray-800">

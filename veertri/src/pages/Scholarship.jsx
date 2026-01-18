@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { scholarships } from "../data/scholarships";
+import SEO from "../components/SEO";
 
 import scholarshipBg from "../assets/scholarshipBG.jpg";
 import entertainmentBg from "../assets/entertainment.jpg";
@@ -16,17 +17,10 @@ import {
   X,
   Upload,
   Download,
-
 } from "lucide-react";
 import { EligibilityModal } from "../components/EligibilityModal";
 import { BankDetailsModal } from "../components/BankDetailsModal";
 import { ConfirmationModal } from "../components/ConfirmationModal";
-
-
-
-
-
-
 
 export default function Scholarship() {
   const navigate = useNavigate();
@@ -196,6 +190,12 @@ Thank you for using Veertri.
       style={{ backgroundImage: `url(${entertainmentBg})` }}
     >
       <div className="min-h-screen dark:bg-black/50 dark:backdrop-blur-sm transition-colors duration-300 pt-24 px-4 md:px-16 pb-12">
+        <SEO
+          title="Scholarships - Veertri | Education Funding Opportunities"
+          description="Find scholarships for students in India. Government schemes, private funding, and merit-based scholarships for school and college students."
+          keywords="scholarships India, education funding, student scholarships, PM scholarship, merit scholarship"
+          canonicalUrl="https://veertri.com/scholarship"
+        />
         <div
           className="relative rounded-2xl overflow-hidden mb-12 text-left py-16 px-8 md:px-12"
           style={{

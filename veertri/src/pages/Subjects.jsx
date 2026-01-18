@@ -1,4 +1,5 @@
 import HeroSection from "../components/HeroSection";
+import SEO from "../components/SEO";
 import bgImage from "../assets/bgImage2.jpg";
 import { categories, getFeaturedContent } from "../data/education";
 import {
@@ -495,6 +496,12 @@ const Subjects = () => {
       style={{ backgroundImage: `url(${bgImage})` }}
     >
       <div className="min-h-screen dark:bg-black/30 dark:backdrop-blur-sm transition-colors duration-300 pt-24">
+        <SEO
+          title="Education - Veertri | CBSE, ICSE & More Curriculum"
+          description="Explore educational content for classes Pre-school to 10th. CBSE, ICSE, IB curriculum with videos, exercises, and tests."
+          keywords="CBSE syllabus, ICSE curriculum, online education, school subjects, class videos, educational content"
+          canonicalUrl="https://veertri.com/subjects"
+        />
         <div className="px-4 md:px-16 mb-8">
           <div className="rounded-3xl overflow-hidden shadow-2xl border border-white/20 dark:border-gray-800">
             <HeroSection content={heroContent} isCompact={true} />
