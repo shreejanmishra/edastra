@@ -27,7 +27,7 @@ const MovieCard = memo(
           onToggleComplete();
         }
       },
-      [item.id, onToggleComplete, toggleComplete]
+      [item.id, onToggleComplete, toggleComplete],
     );
 
     let widthClass = "";
@@ -38,14 +38,15 @@ const MovieCard = memo(
         ? "w-[85vw] md:w-[40vw] lg:w-[35vw]"
         : "w-[80vw] md:w-[45vw] lg:w-[28vw]";
     } else {
-      widthClass = isLarge ? "w-80 md:w-96" : "w-64 md:w-72";
+      // Changed mobile width to viewport-based for "one view" feel
+      widthClass = isLarge ? "w-[85vw] md:w-96" : "w-[75vw] md:w-72";
     }
 
     return (
       <Link
         to={`/watch/${item.id}`}
         state={{ bgImage }}
-        className={`group/card relative flex flex-col h-full bg-white/90 dark:bg-gray-900/80 backdrop-blur-sm rounded-xl shadow-lg overflow-hidden border border-gray-200 dark:border-gray-700 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl ${widthClass} flex-shrink-0`}
+        className={`group/card relative flex flex-col bg-white/90 dark:bg-gray-900/80 backdrop-blur-sm rounded-xl shadow-lg overflow-hidden border border-gray-200 dark:border-gray-700 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl ${widthClass} flex-shrink-0 snap-center h-[320px] md:h-[360px]`}
       >
         {/* Thumbnail Container */}
         <div className="relative aspect-video overflow-hidden">
@@ -86,7 +87,7 @@ const MovieCard = memo(
             {item.title}
           </h3>
 
-          <div className="flex items-center gap-3 text-xs text-gray-600 dark:text-gray-400 mb-3">
+          <div className="flex items-center gap-3 text-xs text-gray-600 dark:text-gray-400 mb-3 flex-wrap">
             <div className="flex items-center gap-1">
               <Star size={12} className="text-[#FAD502] fill-[#FAD502]" />
               <span>{item.rating}</span>
@@ -114,7 +115,7 @@ const MovieCard = memo(
         </div>
       </Link>
     );
-  }
+  },
 );
 
 export default MovieCard;
