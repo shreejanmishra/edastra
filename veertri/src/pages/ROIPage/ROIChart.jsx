@@ -22,7 +22,7 @@ const ROIChart = memo(({ graphData }) => {
     const minWidthPerPoint = 100;
     const calculatedWidth = Math.max(
       d3Container.current.clientWidth,
-      graphData.length * minWidthPerPoint + margin.left + margin.right
+      graphData.length * minWidthPerPoint + margin.left + margin.right,
     );
 
     const width = calculatedWidth - margin.left - margin.right;
@@ -42,8 +42,8 @@ const ROIChart = memo(({ graphData }) => {
       .domain(graphData.map((d) => d.date));
 
     const x1 = scaleBand()
-      .padding(0.05)
-      .domain(["users", "feedback"])
+      .padding(0.4)
+      .domain(["users"])
       .rangeRound([0, x0.bandwidth()]);
 
     svg
@@ -59,7 +59,7 @@ const ROIChart = memo(({ graphData }) => {
 
     // Y Axis
     const y = scaleLinear()
-      .domain([0, max(graphData, (d) => Math.max(d.users, d.feedback)) * 1.1])
+      .domain([0, max(graphData, (d) => d.users) * 1.1])
       .nice()
       .rangeRound([height, 0]);
 
@@ -87,10 +87,7 @@ const ROIChart = memo(({ graphData }) => {
       .join("g")
       .attr("transform", (d) => `translate(${x0(d.date)},0)`)
       .selectAll("rect")
-      .data((d) => [
-        { key: "users", value: d.users, date: d.date },
-        { key: "feedback", value: d.feedback, date: d.date },
-      ])
+      .data((d) => [{ key: "users", value: d.users, date: d.date }])
       .join("rect")
       .attr("x", (d) => x1(d.key))
       .attr("y", (d) => y(d.value))
@@ -99,8 +96,21 @@ const ROIChart = memo(({ graphData }) => {
       .attr("fill", (d) => color(d.key))
       .append("title")
       .text(
-        (d) => `${d.key === "users" ? "New Users" : "Feedback"}: ${d.value}`
+        (d) => `${d.key === "users" ? "New Users" : "Feedback"}: ${d.value}`,
       );
+
+    // Week Labels
+    svg
+      .append("g")
+      .selectAll("text")
+      .data(graphData)
+      .join("text")
+      .attr("x", (d) => x0(d.date) + x0.bandwidth() / 2)
+      .attr("y", (d) => y(d.users) - 5)
+      .attr("text-anchor", "middle")
+      .attr("font-size", "10px")
+      .attr("fill", "#ccc")
+      .text((d, i) => `Week ${i + 1}`);
 
     // Legend
     const legend = svg
@@ -109,7 +119,7 @@ const ROIChart = memo(({ graphData }) => {
       .attr("font-size", 10)
       .attr("text-anchor", "end")
       .selectAll("g")
-      .data(["New Users", "Feedback Given"])
+      .data(["New Users"])
       .enter()
       .append("g")
       .attr("transform", (d, i) => `translate(0,${i * 20})`);
