@@ -23,7 +23,7 @@ const MONGO_URI = process.env.MONGO_URI || "mongodb://localhost:27017/veertri";
 console.log("MONGO_URI configured:", MONGO_URI ? "Yes" : "No");
 console.log(
   "MONGO_URI starts with mongodb:",
-  MONGO_URI?.startsWith("mongodb") ? "Yes" : "No"
+  MONGO_URI?.startsWith("mongodb") ? "Yes" : "No",
 );
 
 let cachedDb = null;
@@ -248,7 +248,7 @@ app.get("/api/roi", async (req, res) => {
 app.get("/api/ingest-csv", async (req, res) => {
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = path.dirname(__filename);
-  const csvPath = path.join(__dirname, "data", "data1_ingest.csv");
+  const csvPath = path.join(__dirname, "data", "Data_Jan5_to_Feb7_Cleaned.csv");
 
   console.log(`Ingesting from: ${csvPath}`);
   if (!fs.existsSync(csvPath)) {
@@ -266,26 +266,30 @@ app.get("/api/ingest-csv", async (req, res) => {
       });
 
       const user = {
-        firstName: normalizedRow["first name"] || normalizedRow["firstname"],
-        lastName: normalizedRow["last name"] || normalizedRow["lastname"],
-        email: normalizedRow["email"],
-        age: normalizedRow["age"],
+        firstName:
+          normalizedRow["firstname"] || normalizedRow["first name"] || "",
+        lastName: normalizedRow["lastname"] || normalizedRow["last name"] || "",
+        email: normalizedRow["email"] || "",
+        age: parseInt(normalizedRow["age"]) || 0,
         phoneNumber:
-          normalizedRow["phone number"] ||
           normalizedRow["phonenumber"] ||
-          normalizedRow["phone"],
+          normalizedRow["phone number"] ||
+          normalizedRow["phone"] ||
+          "",
         gender: (normalizedRow["gender"] || "").toLowerCase(),
         feedback: normalizedRow["feedback"] || "",
         createdAt:
+          normalizedRow["createdat"] ||
+          normalizedRow["created_at"] ||
           normalizedRow["date"] ||
           normalizedRow["created"] ||
-          normalizedRow["createdat"] ||
           normalizedRow["timestamp"]
             ? new Date(
-                normalizedRow["date"] ||
+                normalizedRow["createdat"] ||
+                  normalizedRow["created_at"] ||
+                  normalizedRow["date"] ||
                   normalizedRow["created"] ||
-                  normalizedRow["createdat"] ||
-                  normalizedRow["timestamp"]
+                  normalizedRow["timestamp"],
               )
             : new Date(),
       };
