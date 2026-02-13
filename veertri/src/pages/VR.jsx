@@ -6,10 +6,10 @@ const VR = () => {
   return (
     <div className="relative min-h-screen dark:bg-black bg-gray-50 dark:text-white text-gray-900 flex flex-col items-center justify-center transition-colors duration-300 overflow-hidden pt-20 pb-10">
       <SEO
-        title="VR Experience - Veertri | Immersive Learning"
-        description="Experience the future of education with Veertri VR. Immersive virtual reality learning coming soon. Subscribe for early access."
+        title="VR Experience - Edastra | Immersive Learning"
+        description="Experience the future of education with Edastra VR. Immersive virtual reality learning coming soon. Subscribe for early access."
         keywords="VR education, virtual reality learning, immersive education, VR headset, educational VR"
-        canonicalUrl="https://veertri.com/vr"
+        canonicalUrl="https://edastra.com/vr"
       />
       <div className="relative z-10 flex flex-col items-center justify-center group mb-12">
         <div className="relative">

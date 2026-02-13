@@ -101,7 +101,7 @@ const MyList = () => {
                           {item.title}
                         </h2>
                         <p className="text-sm dark:text-gray-400 text-gray-500 font-medium transition-colors duration-300">
-                          Instructor: {item.instructor || "Veertri Expert"}
+                          Instructor: {item.instructor || "Edastra Expert"}
                         </p>
                       </div>
 
@@ -179,7 +179,7 @@ const MyList = () => {
                         {item.title}
                       </h2>
                       <p className="text-sm dark:text-gray-400 text-gray-500 font-medium transition-colors duration-300">
-                        Instructor: {item.instructor || "Veertri Expert"}
+                        Instructor: {item.instructor || "Edastra Expert"}
                       </p>
                     </div>
 

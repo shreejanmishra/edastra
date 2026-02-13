@@ -17,7 +17,7 @@ app.use(cors());
 app.use(express.json());
 
 // MongoDB Connection
-const MONGO_URI = process.env.MONGO_URI || "mongodb://localhost:27017/veertri";
+const MONGO_URI = process.env.MONGO_URI || "mongodb://localhost:27017/edastra";
 
 // Debug: Check if MONGO_URI is set from environment
 console.log("MONGO_URI configured:", MONGO_URI ? "Yes" : "No");
@@ -374,7 +374,7 @@ app.get("/api/cleanup-bad-data", async (req, res) => {
 });
 
 app.get("/", (req, res) => {
-  res.send("Veertri Backend is running");
+  res.send("Edastra Backend is running");
 });
 
 if (process.env.NODE_ENV !== "production") {

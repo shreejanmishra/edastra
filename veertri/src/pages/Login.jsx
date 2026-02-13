@@ -26,7 +26,7 @@ const Login = () => {
     <div className="min-h-screen bg-black flex items-center justify-center px-4">
       <div className="max-w-md w-full bg-[#1a1a1a] rounded-2xl p-8 border border-gray-800 shadow-2xl">
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-[#FAD502] mb-2">Veertri</h1>
+          <h1 className="text-4xl font-bold text-[#FAD502] mb-2">Edastra</h1>
           <p className="text-gray-400">Your Learning Companion</p>
           <div className="text-left text-sm text-gray-500 mt-4">
             <p>Use any username and password to login</p>

@@ -62,7 +62,7 @@ const HomePage = () => {
         link: "/home/top-rated",
       },
     ],
-    []
+    [],
   );
 
   return (
@@ -72,20 +72,20 @@ const HomePage = () => {
     >
       <div className="min-h-screen dark:bg-black/50 dark:backdrop-blur-sm transition-colors duration-300 pt-24 pb-20">
         <SEO
-          title="Veertri - Home | Interactive Educational Entertainment"
-          description="Discover trending educational videos, courses, and interactive content. Experience the future of learning with Veertri."
+          title="Edastra - Home | Interactive Educational Entertainment"
+          description="Discover trending educational videos, courses, and interactive content. Experience the future of learning with Edastra."
           keywords="education, edutainment, trending courses, educational videos, online learning"
-          canonicalUrl="https://veertri.com/"
+          canonicalUrl="https://edastra.com/"
           structuredData={{
             "@context": "https://schema.org",
             "@type": "WebSite",
-            name: "Veertri",
-            url: "https://veertri.com",
+            name: "Edastra",
+            url: "https://edastra.com",
             description:
               "Interactive educational entertainment platform for students",
             potentialAction: {
               "@type": "SearchAction",
-              target: "https://veertri.com/search?q={search_term_string}",
+              target: "https://edastra.com/search?q={search_term_string}",
               "query-input": "required name=search_term_string",
             },
           }}

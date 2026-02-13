@@ -174,10 +174,10 @@ const MyCorner = () => {
     >
       <div className="min-h-screen dark:bg-black/50 dark:backdrop-blur-sm transition-colors duration-300 pt-24 pb-20">
         <SEO
-          title="My Corner - Veertri | Your Personal Learning Dashboard"
-          description="Access your saved content, subscriptions, and continue learning from where you left off. Your personalized Veertri dashboard."
+          title="My Corner - Edastra | Your Personal Learning Dashboard"
+          description="Access your saved content, subscriptions, and continue learning from where you left off. Your personalized Edastra dashboard."
           keywords="my list, saved videos, learning dashboard, subscriptions, continue watching"
-          canonicalUrl="https://veertri.com/my-corner"
+          canonicalUrl="https://edastra.com/my-corner"
         />
         {/* My List Section */}
         <MyCornerRow title="My List" items={myList} onRemove={removeFromList} />

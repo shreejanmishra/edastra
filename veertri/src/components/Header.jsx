@@ -53,11 +53,11 @@ const Header = () => {
           <Link to="/" className="flex items-center gap-3">
             <img
               src={brandIcon}
-              alt="Veertri"
+              alt="Edastra"
               className="h-10 w-10 md:h-12 md:w-12 object-contain mt-1"
             />
             <span className="text-[#FAD502] text-xl md:text-2xl font-bold hover:text-[#e5c302] transition-colors">
-              VEERTRI
+              EDASTRA
             </span>
           </Link>
 

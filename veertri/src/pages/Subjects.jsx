@@ -497,39 +497,39 @@ const Subjects = () => {
     >
       <div className="min-h-screen dark:bg-black/30 dark:backdrop-blur-sm transition-colors duration-300 pt-24">
         <SEO
-          title="Education - Veertri | CBSE, ICSE & More Curriculum"
+          title="Education - Edastra | CBSE, ICSE & More Curriculum"
           description="Explore educational content for classes Pre-school to 10th. CBSE, ICSE, IB curriculum with videos, exercises, and tests."
           keywords="CBSE syllabus, ICSE curriculum, online education, school subjects, class videos, educational content"
-          canonicalUrl="https://veertri.com/subjects"
+          canonicalUrl="https://edastra.com/subjects"
           structuredData={{
             "@context": "https://schema.org",
             "@type": "ItemList",
-            name: "Educational Courses on Veertri",
+            name: "Educational Courses on Edastra",
             description: "Browse educational content by subject and class",
             itemListElement: [
               {
                 "@type": "ListItem",
                 position: 1,
                 name: "Mathematics",
-                url: "https://veertri.com/subjects/mathematics",
+                url: "https://edastra.com/subjects/mathematics",
               },
               {
                 "@type": "ListItem",
                 position: 2,
                 name: "Science",
-                url: "https://veertri.com/subjects/science",
+                url: "https://edastra.com/subjects/science",
               },
               {
                 "@type": "ListItem",
                 position: 3,
                 name: "English",
-                url: "https://veertri.com/subjects/english",
+                url: "https://edastra.com/subjects/english",
               },
               {
                 "@type": "ListItem",
                 position: 4,
                 name: "Social Studies",
-                url: "https://veertri.com/subjects/social-studies",
+                url: "https://edastra.com/subjects/social-studies",
               },
             ],
           }}

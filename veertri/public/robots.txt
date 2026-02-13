@@ -1,4 +1,4 @@
-# Veertri - Educational Entertainment Platform
+# Edastra - Educational Entertainment Platform
 
 ## Allow all crawlers
 User-agent: *
@@ -9,7 +9,7 @@ Disallow: /roi
 Disallow: /api/
 
 ## Sitemap location
-Sitemap: https://veertri.com/sitemap.xml
+Sitemap: https://edastra.com/sitemap.xml
 
 ## Crawl delay (be nice to servers)
 Crawl-delay: 1

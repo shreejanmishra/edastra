@@ -280,7 +280,7 @@ export const curriculum = {
           "Jack and Jill",
           "Johny Johny Yes Papa",
         ],
-        "nature"
+        "nature",
       ),
       Stories: generateTopics(
         [
@@ -289,7 +289,7 @@ export const curriculum = {
           "The Hare and the Tortoise",
           "The Fox and the Grapes",
         ],
-        "book"
+        "book",
       ),
       Alphabets: generateTopics(
         [
@@ -299,7 +299,7 @@ export const curriculum = {
           "D for Dog",
           "Vowels and Consonants",
         ],
-        "book"
+        "book",
       ),
       Numbers: generateTopics(
         [
@@ -309,7 +309,7 @@ export const curriculum = {
           "Colors",
           "Big and Small",
         ],
-        "math"
+        "math",
       ),
       Drawing: generateTopics(
         [
@@ -321,7 +321,7 @@ export const curriculum = {
           "Good Habits",
           "My Family",
         ],
-        "arts"
+        "arts",
       ),
     },
     "Class 1": {
@@ -335,7 +335,7 @@ export const curriculum = {
           "Measurement",
           "Data Handling",
         ],
-        "math"
+        "math",
       ),
       EVS: generateTopics(
         [
@@ -346,7 +346,7 @@ export const curriculum = {
           "Water & Air",
           "Plants Around Us",
         ],
-        "nature"
+        "nature",
       ),
       English: generateTopics(
         [
@@ -358,7 +358,7 @@ export const curriculum = {
           "Lalu and Peelu",
           "Once I Saw a Little Bird",
         ],
-        "book"
+        "book",
       ),
       Hindi: generateTopics(
         [
@@ -370,7 +370,7 @@ export const curriculum = {
           "Chuk Chuk Gaadi",
           "Rasoi Ghar",
         ],
-        "hindi language"
+        "hindi language",
       ),
     },
     "Class 10": {
@@ -385,7 +385,7 @@ export const curriculum = {
           "How do Organisms Reproduce?",
           "Light – Reflection and Refraction",
         ],
-        "science laboratory"
+        "science laboratory",
       ),
       Maths: generateTopics(
         [
@@ -398,7 +398,7 @@ export const curriculum = {
           "Coordinate Geometry",
           "Introduction to Trigonometry",
         ],
-        "math"
+        "math",
       ),
       English: generateTopics(
         [
@@ -407,7 +407,7 @@ export const curriculum = {
           "Two Stories about Flying",
           "From the Diary of Anne Frank",
         ],
-        "literature book"
+        "literature book",
       ),
       Hindi: generateTopics(
         [
@@ -416,11 +416,11 @@ export const curriculum = {
           "Savaiya and Kavitt",
           "Aatmkathya",
         ],
-        "hindi language"
+        "hindi language",
       ),
       Computer: generateTopics(
         ["Internet Basics", "HTML", "CSS", "Cyber Ethics"],
-        "computer code"
+        "computer code",
       ),
       History: generateTopics(
         [
@@ -429,7 +429,7 @@ export const curriculum = {
           "The Making of a Global World",
           "The Age of Industrialisation",
         ],
-        "history map"
+        "history map",
       ),
       Civics: generateTopics(
         [
@@ -438,7 +438,7 @@ export const curriculum = {
           "Democracy and Diversity",
           "Gender, Religion and Caste",
         ],
-        "politics voting"
+        "politics voting",
       ),
       Geography: generateTopics(
         [
@@ -447,7 +447,7 @@ export const curriculum = {
           "Water Resources",
           "Agriculture",
         ],
-        "geography earth"
+        "geography earth",
       ),
     },
   },
@@ -461,7 +461,7 @@ export const curriculum = {
 export const getContentBySubjectAndClass = (
   subject,
   classLevel,
-  board = boards.CBSE
+  board = boards.CBSE,
 ) => {
   const boardData = curriculum[board];
 
@@ -519,7 +519,7 @@ export const getContentBySubjectAndClass = (
     duration: "45m",
     rating: (4 + Math.random()).toFixed(1),
     description: topic.description,
-    instructor: "Veertri Faculty",
+    instructor: "Edastra Faculty",
     featured: Math.random() > 0.8,
     videoUrl: `https://www.youtube.com/embed/${topic.videoId}`,
     classLevel:
@@ -530,7 +530,7 @@ export const getContentBySubjectAndClass = (
 export const getSubjectHeaderImage = (
   subject,
   classLevel,
-  board = boards.CBSE
+  board = boards.CBSE,
 ) => {
   // Try to find a topic image from the curriculum first
   const items = getContentBySubjectAndClass(subject, classLevel, board);

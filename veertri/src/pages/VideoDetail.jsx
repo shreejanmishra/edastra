@@ -99,10 +99,10 @@ const VideoDetail = () => {
       embedUrl: content.videoUrl,
       publisher: {
         "@type": "Organization",
-        name: "Veertri",
+        name: "Edastra",
         logo: {
           "@type": "ImageObject",
-          url: "https://veertri.com/logo.png",
+          url: "https://edastra.com/logo.png",
         },
       },
     };
@@ -120,10 +120,10 @@ const VideoDetail = () => {
     <div className="bg-black min-h-screen">
       {content && (
         <SEO
-          title={`${content.title} - Watch on Veertri`}
+          title={`${content.title} - Watch on Edastra`}
           description={content.description}
-          keywords={`${content.genre}, ${content.title}, educational video, veertri`}
-          canonicalUrl={`https://veertri.com/watch/${id}`}
+          keywords={`${content.genre}, ${content.title}, educational video, edastra`}
+          canonicalUrl={`https://edastra.com/watch/${id}`}
           ogImage={content.backdrop || content.thumbnail}
           ogType="video.other"
           structuredData={videoStructuredData}

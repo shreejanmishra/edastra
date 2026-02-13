@@ -1,6 +1,6 @@
-# Veertri - The Ultimate Edutainment Platform 🎓🎬
+# Edastra - The Ultimate Edutainment Platform 🎓🎬
 
-Veertri is a cutting-edge web application that bridges the gap between education and entertainment. It provides a seamless experience for students to access curriculum-based learning materials, documentaries, and educational movies, while also offering opportunities for scholarships and immersive VR experiences.
+Edastra is a cutting-edge web application that bridges the gap between education and entertainment. It provides a seamless experience for students to access curriculum-based learning materials, documentaries, and educational movies, while also offering opportunities for scholarships and immersive VR experiences.
 
 ## 🌟 Key Features & USP
 
@@ -57,8 +57,8 @@ Follow these steps to set up the project locally.
 1.  **Clone the repository**
 
     ```bash
-    git clone https://github.com/yourusername/veertri.git
-    cd veertri
+    git clone https://github.com/yourusername/edastra.git
+    cd edastra
     ```
 
 2.  **Install dependencies**
@@ -81,7 +81,7 @@ Follow these steps to set up the project locally.
 ## 📂 Project Structure
 
 ```
-veertri/
+edastra/
 ├── public/              # Static assets
 ├── src/
 │   ├── assets/          # Images and global styles
