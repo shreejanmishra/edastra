@@ -115,6 +115,7 @@ Edastra is a full-stack edutainment web application that bridges the gap between
 ## 📂 Project Structure
 
 ```
+
 edastra/
 ├── edastra/                  # Main application
 │   ├── api/                  # Vercel serverless API handlers
@@ -151,6 +152,7 @@ edastra/
 │   └── vercel.json           # Vercel deployment config
 ├── License
 └── README.md                 # ← You are here
+
 ```
 
 ## 📄 License
