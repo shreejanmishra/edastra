@@ -8,7 +8,7 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     // Check if user is logged in from localStorage
-    const storedUser = localStorage.getItem("veertri_user");
+    const storedUser = localStorage.getItem("edastra_user");
     if (storedUser) {
       setUser(JSON.parse(storedUser));
     }
@@ -28,7 +28,7 @@ export const AuthProvider = ({ children }) => {
           "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=800&q=80",
       };
       setUser(mockUser);
-      localStorage.setItem("veertri_user", JSON.stringify(mockUser));
+      localStorage.setItem("edastra_user", JSON.stringify(mockUser));
       return true;
     }
     return false;
@@ -36,12 +36,12 @@ export const AuthProvider = ({ children }) => {
 
   const logout = () => {
     setUser(null);
-    localStorage.removeItem("veertri_user");
+    localStorage.removeItem("edastra_user");
   };
 
   const value = useMemo(
     () => ({ user, login, logout, loading }),
-    [user, loading]
+    [user, loading],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

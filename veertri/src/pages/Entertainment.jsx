@@ -23,10 +23,10 @@ const Entertainment = () => {
     >
       <div className="min-h-screen dark:bg-black/50 dark:backdrop-blur-sm transition-colors duration-300 pt-24 pb-20">
         <SEO
-          title="Entertainment - Veertri | Educational Movies & Shows"
-          description="Watch educational entertainment content including movies, shows, and documentaries. Learning meets fun at Veertri."
+          title="Entertainment - Edastra | Educational Movies & Shows"
+          description="Watch educational entertainment content including movies, shows, and documentaries. Learning meets fun at Edastra."
           keywords="educational movies, kids shows, learning videos, entertainment, documentaries"
-          canonicalUrl="https://veertri.com/entertainment"
+          canonicalUrl="https://edastra.com/entertainment"
         />
         <div className="px-4 md:px-16 mb-8">
           <div className="rounded-3xl overflow-hidden shadow-2xl border border-white/20 dark:border-gray-800">

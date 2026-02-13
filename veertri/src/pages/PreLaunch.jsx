@@ -76,10 +76,10 @@ const PreLaunch = () => {
       style={{ backgroundImage: `url(${bgImage})` }}
     >
       <SEO
-        title="Join Veertri Beta - Free Premium Access for Early Users"
-        description="Be among the first 1000 users to experience Veertri's edutainment platform. Sign up now for 1 month of free premium access on release."
+        title="Join Edastra Beta - Free Premium Access for Early Users"
+        description="Be among the first 1000 users to experience Edastra's edutainment platform. Sign up now for 1 month of free premium access on release."
         keywords="beta testing, early access, free premium, education app, edutainment"
-        canonicalUrl="https://veertri.com/pre-launch"
+        canonicalUrl="https://edastra.com/pre-launch"
       />
       <div className="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
 

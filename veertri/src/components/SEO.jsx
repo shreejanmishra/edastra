@@ -14,8 +14,8 @@ import { useEffect } from "react";
  * @param {Object} props.structuredData - JSON-LD structured data object
  */
 const SEO = ({
-  title = "Veertri - Interactive Educational Entertainment Platform",
-  description = "Experience the future of education with Veertri. Interactive learning platform combining entertainment and education for students of all ages.",
+  title = "Edastra - Interactive Educational Entertainment Platform",
+  description = "Experience the future of education with Edastra. Interactive learning platform combining entertainment and education for students of all ages.",
   keywords = "education, edutainment, learning, online courses",
   canonicalUrl,
   ogImage = "/og-image.jpg",
@@ -34,7 +34,7 @@ const SEO = ({
         const [attr, value] = Object.entries(
           selector.includes("property=")
             ? { property: selector.match(/property="([^"]+)"/)[1] }
-            : { name: selector.match(/name="([^"]+)"/)[1] }
+            : { name: selector.match(/name="([^"]+)"/)[1] },
         )[0];
         element.setAttribute(attr, value);
         document.head.appendChild(element);
@@ -63,7 +63,7 @@ const SEO = ({
     updateMetaTag(
       'meta[property="twitter:description"]',
       "content",
-      description
+      description,
     );
     if (ogImage) {
       updateMetaTag('meta[property="twitter:image"]', "content", ogImage);
@@ -88,9 +88,9 @@ const SEO = ({
     const defaultSchema = {
       "@context": "https://schema.org",
       "@type": "Organization",
-      name: "Veertri",
-      url: "https://veertri.com",
-      logo: "https://veertri.com/logo.png",
+      name: "Edastra",
+      url: "https://edastra.com",
+      logo: "https://edastra.com/logo.png",
       description:
         "Interactive educational entertainment platform for students",
       sameAs: [],

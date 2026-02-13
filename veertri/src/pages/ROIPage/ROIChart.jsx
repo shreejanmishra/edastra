@@ -19,11 +19,9 @@ const ROIChart = memo(({ graphData }) => {
     const margin = { top: 20, right: 30, bottom: 80, left: 40 };
 
     // Calculate width based on data points
-    const minWidthPerPoint = 100;
-    const calculatedWidth = Math.max(
-      d3Container.current.clientWidth,
-      graphData.length * minWidthPerPoint + margin.left + margin.right,
-    );
+    const minWidthPerPoint = 60;
+    const calculatedWidth =
+      graphData.length * minWidthPerPoint + margin.left + margin.right;
 
     const width = calculatedWidth - margin.left - margin.right;
     const height = 400 - margin.top - margin.bottom;
@@ -42,7 +40,7 @@ const ROIChart = memo(({ graphData }) => {
       .domain(graphData.map((d) => d.date));
 
     const x1 = scaleBand()
-      .padding(0.4)
+      .padding(0.2)
       .domain(["users"])
       .rangeRound([0, x0.bandwidth()]);
 

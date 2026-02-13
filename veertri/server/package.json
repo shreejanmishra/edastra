@@ -1,8 +1,8 @@
 {
-  "name": "veertri-server",
+  "name": "edastra-server",
   "version": "1.0.0",
   "type": "module",
-  "description": "Backend for Veertri Pre-launch",
+  "description": "Backend for Edastra Pre-launch",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

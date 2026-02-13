@@ -11,7 +11,7 @@ export const educationalVideos = [
     rating: "5.0",
     description:
       "Experience the future of education with our interactive learning platform.",
-    instructor: "VeerTri Team",
+    instructor: "Edastra Team",
     featured: true,
     videoUrl: "https://www.youtube.com/watch?v=1rV9uoSKBSI",
     classLevel: 8,
@@ -553,10 +553,10 @@ export const categories = [
     name: "Mathematics",
     items: [
       ...educationalVideos.filter((m) =>
-        ["Mathematics", "Maths", "Algebra", "Geometry"].includes(m.genre)
+        ["Mathematics", "Maths", "Algebra", "Geometry"].includes(m.genre),
       ),
       ...courses.filter((t) =>
-        ["Mathematics", "Maths", "Algebra", "Geometry"].includes(t.genre)
+        ["Mathematics", "Maths", "Algebra", "Geometry"].includes(t.genre),
       ),
     ],
   },
@@ -572,7 +572,7 @@ export const categories = [
           "Biology",
           "Nature",
           "EVS",
-        ].includes(m.genre)
+        ].includes(m.genre),
       ),
       ...courses.filter((t) =>
         [
@@ -582,7 +582,7 @@ export const categories = [
           "Biology",
           "Nature",
           "EVS",
-        ].includes(t.genre)
+        ].includes(t.genre),
       ),
     ],
   },
@@ -601,7 +601,7 @@ export const categories = [
           "Sociology",
           "Psychology",
           "Biography",
-        ].includes(m.genre)
+        ].includes(m.genre),
       ),
       ...courses.filter((t) =>
         [
@@ -614,7 +614,7 @@ export const categories = [
           "Sociology",
           "Psychology",
           "Biography",
-        ].includes(t.genre)
+        ].includes(t.genre),
       ),
     ],
   },
@@ -624,13 +624,13 @@ export const categories = [
     items: [
       ...educationalVideos.filter((m) =>
         ["Computer Science", "Technology", "Design", "Coding", "AI"].includes(
-          m.genre
-        )
+          m.genre,
+        ),
       ),
       ...courses.filter((t) =>
         ["Computer Science", "Technology", "Design", "Coding", "AI"].includes(
-          t.genre
-        )
+          t.genre,
+        ),
       ),
     ],
   },
@@ -639,10 +639,10 @@ export const categories = [
     name: "English",
     items: [
       ...educationalVideos.filter((m) =>
-        ["English", "Arts", "Literature", "Grammar"].includes(m.genre)
+        ["English", "Arts", "Literature", "Grammar"].includes(m.genre),
       ),
       ...courses.filter((t) =>
-        ["English", "Arts", "Literature", "Grammar"].includes(t.genre)
+        ["English", "Arts", "Literature", "Grammar"].includes(t.genre),
       ),
     ],
   },
@@ -650,7 +650,7 @@ export const categories = [
 
 export const getFeaturedContent = () => {
   const featured = [...educationalVideos, ...courses].filter(
-    (item) => item.featured
+    (item) => item.featured,
   );
   return featured[Math.floor(Math.random() * featured.length)];
 };
