@@ -194,7 +194,7 @@ export const topicImageMap = {
 
   // --- Class 10 ---
   "Chemical Reactions and Equations":
-    "https://i.ytimg.com/vi/6nsucLqXC9Q/maxresdefault.jpg",
+    "https://www.freepik.com/vectors/chemistry",
   "Acids, Bases and Salts":
     "https://i.ytimg.com/vi/j3IGjkNDmQM/maxresdefault.jpg",
   "Metals and Non-metals":
