@@ -248,7 +248,7 @@ app.get("/api/roi", async (req, res) => {
 app.get("/api/ingest-csv", async (req, res) => {
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = path.dirname(__filename);
-  const csvPath = path.join(__dirname, "data", "Data_Jan5_to_Feb7_Cleaned.csv");
+  const csvPath = path.join(__dirname, "data", "Data_Feb8_to_Mar7_Cleaned.csv");
 
   console.log(`Ingesting from: ${csvPath}`);
   if (!fs.existsSync(csvPath)) {
