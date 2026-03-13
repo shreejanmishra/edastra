@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 import { useState, useEffect, useCallback } from "react";
 import { useTheme } from "../context/ThemeContext";
-import brandIcon from "../assets/brandIcon.png";
+import brandIcon from "../assets/edastraBrandIcon.png";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
