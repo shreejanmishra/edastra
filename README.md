@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <a href="https://edastra.vercel.app/">🔗 Live Demo</a> ·
+  <a href="https://edastrain.vercel.app/">🔗 Live Demo</a> ·
   <a href="#-key-features--usp">Features</a> ·
   <a href="#%EF%B8%8F-tech-stack">Tech Stack</a> ·
   <a href="#-getting-started">Getting Started</a>
